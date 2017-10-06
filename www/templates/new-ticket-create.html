@@ -1,0 +1,52 @@
+<ion-view view-title=" Create Ticket " style="text-align:center">
+    <style>
+        .list {
+            position: relative;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            padding-left: 0;
+            margin: -15px -28px 0 -55px;
+        }
+    </style>
+  <ion-content>
+    <ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+    <div class="row" style="padding: 15px 0;">
+            <ion-label style="text-align: left;padding: 5px 0 0 10px;font-size: 10pt;">Category</ion-label>
+            <select style=" margin-left:0px;    width: 65%;color: blue; border:none" class="ng-pristine ng-valid ng-empty ng-touched">
+                    <option >Sales</option>
+                </select>
+    </div>
+    <div class="row" style="padding: 15px 0;">
+            <ion-label style="text-align: left;padding: 5px 0 0 10px;font-size: 10pt;">Sub Category</ion-label>
+            <select style=" margin-left:0px;    width: 65%;color: blue; border:none" class="ng-pristine ng-valid ng-empty ng-touched">
+                    <option >Pricing</option>
+                    <option>Availablelity</option>
+                    <option>Meeting</option>
+                    <option>Collaterals</option>
+                    <option>General Information</option>
+                    <option>Visit</option>
+                </select>
+    </div>
+    <div class="row" style="padding: 15px 0;">
+            <ion-label style="text-align: left;padding: 5px 0 0 10px;font-size: 10pt;">Priority</ion-label>
+            <select style=" margin-left:0px;    width: 65%;color: blue; border:none" class="ng-pristine ng-valid ng-empty ng-touched">
+                    <option >Critical</option>
+                    <option>Emergency</option>
+                    <option>Normal</option>
+                </select>
+    </div>
+    <div class="row">
+    <label class="item item-input">
+        <textarea placeholder="Description" style="color: blue; border: none;" name="notes" data-notes="" ng-model="notes" class="ng-pristine ng-valid ng-empty ng-touched"></textarea>
+    </label>
+    </div>
+    <div class="row" style="padding: 15px 0;">
+            <div class="today-followupbtn col">Click to Capture</div>
+            <div class="today-followupbtn col" type="file">Click to Attach</div>
+        </div>
+
+        <div class="row" style="position: fixed;bottom: 0;border-top: solid 1px #ccc;">
+                <div class="today-followupbtn col"><a href="#/app/helpdesk" style="text-decoration: none; color:#fff !important">Submit</a></div>
+            </div>
+  </ion-content>
+</ion-view>

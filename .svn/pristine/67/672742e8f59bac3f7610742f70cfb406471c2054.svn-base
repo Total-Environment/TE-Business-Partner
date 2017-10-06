@@ -1,0 +1,186 @@
+<ion-view view-title="Reimbursement" side="Center" class="animate-in-primary bg" ng-controller="ReimbursementController as vm">
+  <ion-content>
+  <ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+<style>
+.draft-Status
+{
+        border-left: solid 5px #03a1fb !important;
+}
+.pending-Status
+{
+        border-left: solid 5px #f8981d !important;
+}
+.approved-Status
+{
+        border-left: solid 5px #2DA72D !important;
+}
+</style>
+    <div class="panel-head">My Claims</div>
+    
+    <div class="collapse-view collapse-temp-new" ng-repeat="claimBook in vm.ClaimBookCollection | orderBy:'-ClaimDate'" ng-class="{'draft-Status': claimBook.Status == 'Draft','processed-Status': claimBook.Status == 'Pending For Approval','approved-Status': claimBook.Status == 'Approved'||claimBook.Status == 'Finance User Approved'}">
+<!--     <a ng-click="vm.getClaimBookByID(claimBook.UniqueId);"> -->
+    <a ui-sref="app.Reimbursement-view({claimbookid:claimBook.UniqueId})" style="text-decoration:none;">
+      <div class="row ion-pad-none">
+      
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim No</div>
+                <div class="col col-50">{{claimBook.UniqueId}}</div>
+
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Type:</div>
+                <div class="col col-50">{{claimBook.ClaimType.Name}}</div>          
+            </div>
+          </div>      
+      </div>
+      <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Amount:</div>
+                <div class="col col-50">{{claimBook.TotalClaimAmount}}</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Date:</div>
+                <div class="col col-50">{{claimBook.ClaimDate  | date : "dd-MMM-yy" }}</div>          
+            </div>
+          </div>      
+      </div>
+    <!--   <div class="row ion-pad-none">
+        <div class="col col-20 text-small">Description:</div>
+        <div class="col">{{claimBook.Remarks}}</div>       
+      </div> -->
+        <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Description:</div>
+                <div class="col col-50">{{claimBook.Remarks}}</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Fund Center:</div>
+                <div class="col col-50">{{claimBook.FundCenter.FundCenterCode}} - {{claimBook.FundCenter.FundCenterDescription}}</div>          
+            </div>
+          </div>      
+      </div>
+         </a> 
+  </div>
+<!-- <a href="#/app/Reimbursement-view" style="text-decoration:none;"> 
+  <div class="collapse-view collapse-temp-warm">
+      <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim No</div>
+                <div class="col col-50">21</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Type:</div>
+                <div class="col col-50">Travel</div>          
+            </div>
+          </div>      
+      </div>
+      <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Amount:</div>
+                <div class="col col-50">10000</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Date:</div>
+                <div class="col col-50">12-Apr-16</div>          
+            </div>
+          </div>      
+      </div>
+      <div class="row ion-pad-none">
+        <div class="col col-20 text-small">Description:</div>
+        <div class="col">Remarks text will be show</div>       
+      </div>
+      
+       </a>  
+        
+  </div>
+  <div class="collapse-view collapse-temp-hot">
+      <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim No</div>
+                <div class="col col-50">21</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Type:</div>
+                <div class="col col-50">Travel</div>          
+            </div>
+          </div>      
+      </div>
+      <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Amount:</div>
+                <div class="col col-50">10000</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Date:</div>
+                <div class="col col-50">12-Apr-16</div>          
+            </div>
+          </div>      
+      </div>
+      <div class="row ion-pad-none">
+        <div class="col col-20 text-small">Description:</div>
+        <div class="col">Remarks text will be show</div>       
+      </div>
+          
+  </div>
+  <div class="collapse-view collapse-temp-approve">
+      <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim No</div>
+                <div class="col col-50">21</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Type:</div>
+                <div class="col col-50">Travel</div>          
+            </div>
+          </div>      
+      </div>
+      <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Amount:</div>
+                <div class="col col-50">10000</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Date:</div>
+                <div class="col col-50">12-Apr-16</div>          
+            </div>
+          </div>      
+      </div>
+      <div class="row ion-pad-none">
+        <div class="col col-20 text-small">Description:</div>
+        <div class="col">Remarks text will be show</div>       
+      </div>
+          
+  </div> -->
+
+</ion-tabs>
+  </ion-content>
+  <a ui-sref="app.Reimbursement-create" style="text-decoration:none;"> <div class="add-icon"><i class="icon ion-plus-circled" style="font-size: 34pt;color: #f8981d;"></i></div></a>
+</ion-view>
+ 

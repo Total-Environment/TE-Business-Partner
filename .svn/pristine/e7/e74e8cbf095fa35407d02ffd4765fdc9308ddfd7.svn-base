@@ -1,0 +1,36 @@
+<ion-view view-title="Reimbursement" style="text-align:center">
+  <ion-content style="background-color:#faebd7;">
+            <div data-role="main" class="ui-content" style="margin-top:25px; background-color:#fff; color:#f8991d;">
+                <div class="row" style="margin-bottom:25px;background-color:#faebd7;">
+                    <!-- <div class="col" align="center">
+                        <a ui-sref="app.Reimbursement({user:'Employee'})">Employee</a>     
+                    </div>
+                    <div class="col" align="center">         
+                        <!-- <a href="#/app/Reimbursement-manager">Manager</a> -->
+                        <!-- <a ui-sref="app.Reimbursement-manager({user:'Manager'})">Manager</a>
+                    </div>
+                    <div class="col" align="center">
+                       
+                        <a ui-sref="app.Reimbursement-Finance({user:'Finance'})">Finance</a>
+                    </div>  -->
+
+
+
+                    <div class="col" align="center">
+                        <a ui-sref="app.Reimbursement({user:'Employee'})"><img src="img/My-Claims.png" id="Leadreg" /></a>
+                        <br />Employee
+                    </div>
+                     <div class="col" align="center">
+                        <a ui-sref="app.Reimbursement-manager({user:'Manager'})"><img src="img/Claim-Approvals.png" id="Leadreg" /></a>
+                        <br />Manager
+                    </div>
+                     <div class="col" align="center">
+                        <a ui-sref="app.Reimbursement-Finance({user:'Finance'})"><img src="img/Claim-Finance-Approval.png" id="Leadreg" /></a>
+                        <br />Finance
+                    </div>
+                </div>
+		    </div>
+             
+          </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,41 @@
+<ion-view view-title="Lead">
+<ion-content ng-controller="SortingByLeadStage">
+  <div >
+   <ul>
+    <li ng-repeat="x in StageValue">
+        <a href="#/app/particular_prospect_details/{{x.LeadID}}" style="text-decoration: none;color:#333">
+        <div class="collapse-view collapse-temp-warm">
+        <div class="row" style="padding: 0px;">
+        <div class="col col-50 collapse-text-head Saleste_ellipsis_text">{{x.CallName}}</div></a>
+        <div class="col table-cells " ng-click="ShowHide()"  style="color:#808080; text-align:right; font-size:12pt;"><i class="icon ion-ios-telephone"></i></span></div>
+        <div class="col table-cells "  ng-click="ShowHide1()" style="color:#808080; text-align:center; font-size:12pt;"><i class="icon ion-android-mail"></i></span>  </div>
+        <div class="col table-cells " style="color:rgb(248, 152, 29)">LTF</span>  </div>
+        <div class="col table-cells " style="color:#1da1f8">T 20</span> </div>
+        </div>
+        <div  ng-show = "IsVisible" class="ph-eml-div" >
+        <i class="icon ion-ios-telephone" style="font-size:14pt; color:#7d9d1a;" ng-click="ShowHide()"></i>
+        <span style="padding:0 5px; font-size:11pt;"> {{x.Mobile}}</span>
+        <i ng-click="ShowHide()" class="icon-fa-times close"  aria-hidden="true"></i>
+       <a href="tel:{{x.Mobile}}"><button type="button" class="call-btn">Call</button></a>
+       </div>
+
+        <div  ng-show = "IsVisible1" class="ph-eml-div">
+        <i class="icon ion-android-mail" style="font-size:14pt; color:#808080;" ng-click="ShowHide1()"></i>
+        <span style="padding:0 5px; font-size:11pt;">{{Email}}</span>
+        <i ng-click="ShowHide1()" class="icon-fa-times close" aria-hidden="true"></i>
+       <button type="button"  class="call-btn">Send Email</button>
+       </div>
+        <div class="row" style="padding: 0px;">
+        <div class="col col-20 collapse-text-small-stage">{{x.LeadStage}}</div>
+        <div class="col col-10 collapse-text-small">5 D</div>
+        <div class="col collapse-text-small">ESV: {{x.ESV}}</div>
+        <div class="col collapse-text-small">EEV: {{x.EEV}}</div>
+        <div class="col collapse-text-small" style="text-align:right">ECD:01-Jan-01</div>
+        </div>
+        </div>
+      </li>
+      </ul>
+  </div>
+</ion-item>
+</ion-content>
+</ion-view>

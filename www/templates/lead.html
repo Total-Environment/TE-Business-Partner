@@ -1,0 +1,123 @@
+<ion-view view-title="Lead" side="Center" class="animate-in-primary bg">
+    <style>
+.list {
+    position: relative;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0;
+    margin: -31px -28px 0 -55px;
+}
+
+.item-options {
+    position: absolute;
+    top: 32px;
+    right: 63px;
+    z-index: 1;
+    height: 43%;
+}
+.button.button-assertive {
+    border-color: transparent;
+    background-color: #7cbd3b;
+    color: #fff;
+}
+        </style>
+<ion-content >
+<ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+
+
+<ion-list show-delete="false" can-swipe="true" swipe-direction="both">
+    <ion-item href="#/app/particular_prospect_details/{{x.LeadID}}">
+            <div class="collapse-view im-card" style="width:98%;padding:0 !important;margin: 15px 0 -11px 0 !important;margin-left: 1% !important;background-color: #e4f9cf;">
+            <div class="row" style="padding: 0px 10px; font-size:10pt;" >
+                <div class="col col-50 collapse-text-head Saleste_ellipsis_text" style="padding-top: 5px;" >Anil Baradia</div>  
+                <div class="col">WoYM</div>
+                <div class="col" style="text-align: right;">Activated</div>
+            </div>
+            <div class="row" style="padding: 0px 10px; font-size:10pt;" >
+                <div class="col col-50" style="padding-top: 5px;" >Manjunath</div>  
+                <div class="col" style="text-align: right;">15-07-17</div>
+            </div>
+        </div>
+    </ion-item>
+
+    <ion-item>
+        <div class="collapse-view im-card" style="width:98%;padding:0 !important;margin: 3px 0 -11px 0 !important;margin-left: 1% !important;background-color: #fffeb0;">
+            <div class="row" style="padding: 0px 10px;font-size:10pt;" >
+                <div class="col col-50 collapse-text-head Saleste_ellipsis_text" style="padding-top: 5px;" >Gajanan Murthy</div>  
+                <div class="col">WoYM</div>
+                <div class="col" style="text-align: right;">Pending</div>
+            </div>
+            <div class="row" style="padding: 0px 10px;font-size:10pt;" >
+                <div class="col col-50" style="padding-top: 5px;" >Nagesh Dadithota</div>  
+                <div class="col" style="text-align: right;">15-07-17</div>
+            </div>
+        </div>          
+        <ion-option-button side="left" class="button-assertive icon" ng-click="modal.show()">Activate</ion-option-button>
+    </ion-item>
+
+    <ion-item href="">
+        <div class="collapse-view im-card" style="width:98%;padding:0 !important;margin: 3px 0 -11px 0 !important;margin-left: 1% !important;background-color: #ffdada;">
+            <div class="row" style="padding: 0px 10px;font-size:10pt;" >
+                <div class="col col-50 collapse-text-head Saleste_ellipsis_text" style="padding-top: 5px;" >Chakravarthy</div>  
+                <div class="col">WoYM</div>
+                <div class="col" style="text-align: right;">In Activate</div>
+            </div>
+            <div class="row" style="padding: 0px 10px;font-size:10pt;" >
+                <div class="col col-50" style="padding-top: 5px;" >Nagesh Dadithota</div>  
+                <div class="col" style="text-align: right;">15-07-17</div>
+            </div>
+        </div>
+    </ion-item>
+
+
+
+
+        <ion-item href="#/app/popup">
+            <div class="collapse-view im-card" style="width:98%;padding:0 !important;margin: 3px 0 -11px 0 !important;margin-left: 1% !important; background-color: #68b41c; color:#fff">
+                <div class="row" style="padding: 0px 10px;font-size:10pt;" >
+                    <div class="col col-50 collapse-text-head Saleste_ellipsis_text" style="padding-top: 5px;" >Kishor</div>  
+                    <div class="col">WoYM</div>
+                    <div class="col" style="text-align: right;">Sold</div>
+                </div>
+                <div class="row" style="padding: 0px 10px;font-size:10pt;" >
+                    <div class="col col-50" style="padding-top: 5px;" >Nagesh Dadithota</div>  
+                    <div class="col" style="text-align: right;">15-07-17</div>
+                </div>
+            </div>          
+            <ion-option-button side="left" class="button-assertive icon"style="background-color: #f8981d;" >Upload Invoice</ion-option-button>
+            
+        </ion-item>
+
+        <ion-item href="#/app/create_prospect">
+                <div class="collapse-view im-card" style="width:98%;padding:0 !important;    margin: 3px 0 -11px 0 !important;margin-left: 1% !important;">
+                    <div class="row" style="padding: 0px 10px;font-size:10pt;" >
+                        <div class="col col-50 collapse-text-head Saleste_ellipsis_text" style="padding-top: 5px;" >Kishor</div>  
+                        <div class="col">WoYM</div>
+                        <div class="col" style="text-align: right;">Draft</div>
+                    </div>
+                    <div class="row" style="padding: 0px 10px;font-size:10pt;" >
+                        <div class="col col-50" style="padding-top: 5px;" >Nagesh Dadithota</div>  
+                        <div class="col" style="text-align: right;">15-07-17</div>
+                    </div>
+                </div>          
+                <ion-option-button side="left" class="button-assertive icon" ng-click="modal.show()">Activate</ion-option-button>
+            </ion-item>
+       
+    </ion-list>
+
+
+    
+                <!-- <ion-list show-delete="false" can-swipe="true" swipe-direction="both">
+                    <ion-item href="#">
+                        Item 1
+                        <ion-option-button side="left" class="button-assertive icon">Activate</ion-option-button>
+                    </ion-item>
+                    <ion-item href="#">
+                        Item 2
+                        <ion-option-button class="button-assertive icon ion-trash-a"></ion-option-button>
+                    </ion-item>
+                </ion-list> -->
+    
+  </ion-content>
+</ion-view>
+ 

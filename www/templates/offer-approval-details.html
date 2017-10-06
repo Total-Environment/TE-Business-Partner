@@ -1,0 +1,449 @@
+<ion-view view-title="Offer" side="Center" class="animate-in-primary bg" ng-controller="OfferApprovalDetails">
+ <style type="text/css">
+	td {
+		white-space: pre-wrap; /* css-3 */
+		white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+		white-space: -pre-wrap; /* Opera 4-6 */
+		white-space: -o-pre-wrap; /* Opera 7 */
+		word-wrap: break-word; /* Internet Explorer 5.5+ */
+	}
+</style>
+<ion-content>
+<ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+
+<!--<div class="collapse-view" style="     padding: 0;   margin-top: 15px !important;">
+  <div class="row" style="padding: 0px;">
+    <div class="col col-75 collapse-text-head Saleste_ellipsis_text">
+        <div> {{SelectedOffer.generalDetails.CallName}}</div>
+        <div style="font-size: 8pt;">{{SelectedOffer.generalDetails.SubProductCode}} | {{SelectedOffer.generalDetails.UnitNumber}}</div>
+        <div style="font-size: 8pt; color: {{SelectedOffer.Specification[0].HeadingColourCode}}">{{SelectedOffer.generalDetails.SpecificationName}}</div>
+        <div style="font-size: 18pt; color: #999">
+          <div class="row" style="padding: 0">
+            
+           <!-- <div class="col" style="padding: 0"><i class="ion-android-call"><a href="tel:{{SelectedOffer.generalDetails.Phone}}"></a></i></div>
+            <div class="col" style="padding: 0"><i class="ion-chatbubble"><a href="sms:{{SelectedOffer.generalDetails.Phone}}"></a></i></div>-->
+            <!--<div class="col" style="padding: 0"><i class="ion-email"><a href="mailto:{{SelectedOffer.generalDetails.Email}}"></a></i></div>
+            
+          </div>
+        </div>       
+    </div>           
+    <div class="col table-cells" style="color:#1da1f8; text-align: right"><img src="http://192.168.51.248/portfolio/{{SelectedOffer.generalDetails.ProjectLogo}}" style="height:75px;margin-top: 5px;"></div>
+  </div>
+</div>-->
+
+  <div class="panel-head atr">
+  
+  
+          <!--  <div class="row" style="padding: 0">
+			
+			  <!-- {{SelectedOffer.generalDetails.UnitNumber}} {{SelectedOffer.Specification[0].HeadingColourCode}}
+			  
+			     {{SelectedOffer.generalDetails.SubProductCode}} | {{SelectedOffer.generalDetails.ProjectName | capitalizeWord}}-->
+              <!--  <div class="col col-100">{{SelectedOffer.generalDetails.CallName}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  {{SelectedOffer.generalDetails.SubProductCode}}| {{SelectedOffer.generalDetails.UnitNumber}}</div>
+                </div>-->
+				
+				<div class="row">
+                         <div class="prospect-edit50">{{SelectedOffer.generalDetails.CallName}}</div>
+                         <div class="prospect-edit40"><span id="spanSpec" style="background-color: {{SelectedOffer.Specification[0].HeadingColourCode}};font-size: 8pt;padding: 3px;color: #fff;"> <b>{{SelectedOffer.generalDetails.SubProductCode}}| {{SelectedOffer.generalDetails.UnitNumber}}</b></span></div>
+                        <div class="prospect-edit30">{{SelectedOffer.generalDetails.ProjectName | capitalizeWord}}</div>
+                      </div>
+				
+            </div>
+            <div style="background-color: #fff">
+                <!--<div class="panel-head" style="background-color: {{SelectedOffer.Specification[0].HeadingColourCode}}">{{SelectedOffer.generalDetails.CallName}}</div>-->
+               <!-- <div class="row collapse-text-small9" style="padding: 0; border-bottom: dotted 1px #ccc">
+                <div class="col">Name : <b>{{SelectedOffer.generalDetails.CallName}}</b></div>
+                <div class="col">Specification :<span id="spanSpec" style="background-color: {{SelectedOffer.Specification[0].HeadingColourCode}};font-size: 8pt;padding: 3px;color: #fff;"> <b>{{SelectedOffer.generalDetails.SpecificationName}}</b></div>
+                </div>-->
+                <div class="row collapse-text-small9" style="padding: 0; border-bottom: dotted 1px #ccc">
+                <div class="col">Offer Date: <b>{{SelectedOffer.generalDetails.CreatedDate | date:'dd-MMM-yy'}}</b></div>
+                <!--<div class="col">Customisation : <b>{{SelectedOffer.unitDetails.CustomizationOption}}</b></div>-->
+                </div>
+               <!-- <div class="row collapse-text-small9" style="padding: 0; border-bottom: dotted 1px #ccc">
+                <div class="col">Carpet Area: <b>{{SelectedOffer.unitDetails.carpetarea | number}}</b></div>
+                <div class="col">Build-Up Area: <b>{{SelectedOffer.unitDetails.builtuparea | number}}</b></div>
+                </div>-->
+                <div class="row collapse-text-small9" style="padding: 0; border-bottom: dotted 1px #ccc">
+                <div class="col">Saleable Area: <b>{{SelectedOffer.unitDetails.saleablearea | number}}</b></div>
+                <div class="col">Total: <b>{{SelectedOffer.unitDetails.consideration | number}}</b></div>
+                </div>
+            </div>
+</div>
+
+
+
+<!--<button class="button button-block button-assertive" style="min-height: 35px;margin: 0 0 5px 0;">No scheme offered</button>-->
+  <ion-list>
+    <div ng-controller="CollapsablePanel1" style="margin-top: 10px">
+	
+	
+                    <div ng-repeat="group in groups">
+                        <div ng-controller="CollapsablePanel1">
+                            <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                                <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                                <span style="font-size:10pt;">Consideration</span>
+                                <span class="badge1 badge-assertive">{{SelectedOffer.generalDetails.Consideration | number}}</span>
+                            </ion-item>
+                            <ion-item  ng-show="isGroupShown(group)">
+                                <table class="table table-bordered" style="width:100%;    margin: -10px 0 0px -7px;">
+                                    <tr class="collapse-text-small9" style="background-color:#ffbe8f; font-weight: bold">
+                                       <!-- <td>#</td>
+                                        <td>Particular</td>
+                                        <td>Multiplier</td>                                         
+                                        <td>Rate</td>                                          
+                                        <td>Price</td>-->
+										
+										
+                                    </tr> 
+                                    <tr class="collapse-text-small9">
+                                        <td>1</td>
+                                        <td><b>Cost of Residential Unit</b></td>
+                                        <td style="text-align:right"></td>
+                                        <td style="text-align:right"></td>
+                                        <td style="text-align:right" id="tdResidentialUnitCost" class="text-middle"><span style="color:inherit;">{{SelectedOffer.generalDetails.Consideration/10000000 | number:2}}</span></td>
+                                    </tr> 
+                                    <tr ng-repeat="s in SelectedOffer.TECostOfUnit" class="collapse-text-small9">
+                                        <td></td>
+                                        <td>{{s.PriceElementCode}}</td>
+                                        <td style="text-align:right" propname="tdSaleable"><span style="color:inherit;">{{s.RateMultiplier | number}}</span></td>
+                                        <td style="text-align:right" class="text-middle" id="tdBaseRate"><span style="color:inherit;">{{s.Rate | number}}</span></td>
+                                        <td style="text-align:right" class="text-middle" id="tdBasePrice"><span style="color:inherit;">{{s.TotalPrice/10000000 | number:2}}</span></td>
+                                    </tr>
+									
+								<!-- 	<tr ng-repeat="s in SelectedOffer.TECarParks" class="collapse-text-small9">
+                                        <td>2</td>
+                                        <td><b>{{s.PriceElementCode}}</b></td>
+                                        <td style="text-align:right" propname="tdMaintenanceBasic"><span style="color:inherit;">{{s.RateMultiplier | number}}</span></td>
+                                        <td style="text-align:right" propname="tdMaintenanceRate"><span style="color:inherit;">{{s.Rate | number}}</span></td>
+                                        <td style="text-align:right" propname="tdMaintenanceFundPrice"><span style="color:inherit;">{{s.TotalPrice/10000000 | number:2}}</span></td>
+                                    </tr>      --> 
+                                   
+                                </table>            
+                            </ion-item>
+                        </div>
+                    </div>
+
+     <!-- <div ng-repeat="group in groups">
+        <div ng-controller="CollapsablePanel1">
+          <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              <span style="font-size:10pt;">Consideration</span>
+              <span class="badge1 badge-assertive">{{SelectedOffer.generalDetails.Consideration | number}}</span>
+          </ion-item>
+          <ion-item  ng-show="isGroupShown(group)">
+	
+            <table class="table table-bordered" id="Table3" style="width:100%;     margin: -10px 0;">
+                <tr style=" font-size:8pt; color:#000;">
+                    <th  colspan="3" ><b>Cost of Residential Unit</b></th>
+                    <th style="text-align: right"><b>{{SelectedOffer.TECostOfUnit[0].total | number}}</b></th>
+                </tr>
+                <tr ng-repeat="s in SelectedOffer.TECostOfUnit[0].Elements" style="font-size:8pt;">
+                    <td>{{s.PriceType}}</td>
+                    <td style="text-align: right">{{s.RateMultiplier | number}}</td>
+                    <td style="text-align: right">{{s.Rate | number }}</td>
+                    <td style="text-align: right">{{s.TotalPrice | number}}</td>
+                </tr>
+               
+                <!--<tr style="font-size:8pt;">
+                    <td><b>Cost of Additional Land</b></td>
+                    <td style="text-align: right">4,516</td>
+                    <td style="text-align: right">8,000</td>
+                    <td style="text-align: right">3,61,28,000</td>
+                </tr>-->
+             <!--   <tr ng-repeat="s in SelectedOffer.TEMaintenanceFund" style="font-size:8pt;">
+                    <td>{{s.title}}</td>
+                    <td style="text-align: right">{{s.area | number}}</td>
+                    <td style="text-align: right">{{s.price | number }}</td>
+                    <td style="text-align: right">{{s.total | number}}</td>
+                </tr>
+            </table>
+          </ion-item>
+        </div>
+      </div>-->
+	  
+	  
+	  
+	  
+	  <div ng-repeat="group in groups">
+                        <div ng-controller="CollapsablePanel1">
+                            <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                                <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                                <span style="font-size:10pt;">  Payment Schedule</span>
+								 <span class="badge1 badge-assertive">{{SelectedOffer.ScheduleTotals.TotalAmount | number}}</span>
+                            </ion-item>
+                            <ion-item  ng-show="isGroupShown(group)">
+                                <div style="width:100%;overflow-y:scroll;margin-top:-10px">
+                                <table class="table table-bordered" id="Table3" style="width:100%;">
+                                    <tr class="collapse-text-small9" style="background-color:#ffbe8f; font-weight: bold">
+                                        <!--<th>#</th>-->
+                                        <!--<th>Payment Schedule--</th>-->
+									<!--	<th>PS</th>
+										<th>Date</th>
+										<th>Amount</th>-->
+                                        <!--<th>Offered Date</th>
+                                        <th>Offered Amount</th>-->
+										
+										
+                                    </tr> 
+                                    <tr ng-repeat="mile in SelectedOffer.ScheduleBerakup" class="collapse-text-small9">
+                                       <td>{{$index+1}}</td>
+                                       <td>{{mile.Code}}</td>
+                                       <td>{{mile.OfferedDate |date:'dd-MMM-yy'}}</td>
+                                       <td style="text-align: right;">{{mile.TotalAmount/10000000 | number:2}}</td>
+                                    </tr>
+                                        
+                                </table>            
+                            </ion-item>
+                        </div>
+                    </div>
+	  
+	  </div>
+
+      <!--<div ng-repeat="group in groups">
+        <div ng-controller="CollapsablePanel1">
+          <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              <span style="font-size:10pt;">Payment Schedule</span>
+              <span class="badge1 badge-assertive"></span>
+          </ion-item>
+          <ion-item  ng-show="isGroupShown(group)">
+
+            <div ng-repeat="group in groups" style="    margin: -10px -5px -10px -5px;">
+              <div ng-controller="CollapsablePanel1">
+                <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#999;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                    <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                    <span style="font-size:10pt;">Offered Schedule</span>
+                    <span class="badge1 badge-assertive"></span>
+                </ion-item>
+                <ion-item  ng-show="isGroupShown(group)">
+  <div ng-if="SelectedOffer.ScheduleBerakup.length==0" style="color:#f00;text-align:center;font-size:100%;">No Data Found</div>
+      <div ng-if="SelectedOffer.ScheduleBerakup.length!=0"> 
+                  <table class="table table-bordered" id="Table3" style="width:100%;     margin: -10px 0;">
+                      
+                      <tr style="font-size:8pt;" ng-repeat="mile in SelectedOffer.ScheduleBerakup">
+                          <td>{{mile.Code}}</td>
+                          <td style="text-align: right">{{mile.Amount | currencyDecimalFormat}}</td>
+                          <td style="text-align: right">{{mile.TotalAmount | currencyDecimalFormat}}</td>
+                      </tr>
+                      
+                  </table>
+				   </div>
+                </ion-item>
+              </div>
+            </div>
+
+          </ion-item>
+        </div>
+      </div>-->
+	  
+	  
+
+     <!-- <div ng-repeat="group in groups">
+        <div ng-controller="CollapsablePanel1">
+          <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              <span style="font-size:10pt;">Carparks</span>
+              <span class="badge1 badge-assertive">{{SelectedOffer.TECarParks[0].Elements[0].RateMultiplier}}</span>
+          </ion-item>
+          <ion-item  ng-show="isGroupShown(group)">
+<div ng-if="SelectedOffer.TECarParks.length==0" style="color:#f00;text-align:center;font-size:100%;">No Data Found</div>
+      <div ng-if="SelectedOffer.TECarParks.length!=0"> 
+            <table class="table table-bordered" id="Table3" style="width:100%;     margin: -10px 0;">
+               
+                <tr  ng-repeat="s in SelectedOffer.TECarParks[0].Elements" >
+                    <td style="font-size:8pt;">{{s.PriceType | htmlToPlaintext}}</td>
+                    <td style="font-size:8pt;text-align: right">{{s.RateMultiplier | number}}</td>
+                    <td style="font-size:8pt;text-align: right">{{s.Rate | number }} </td>
+                    <td style="font-size:8pt;text-align: right">{{s.TotalPrice | number }} </td>
+                </tr>                
+            </table>
+		</div>
+          </ion-item>
+        </div>
+      </div> -->
+	  
+	  
+	   <div ng-repeat="group in groups">
+                        <div ng-controller="CollapsablePanel1">
+                            <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                                <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                                <span style="font-size:10pt;"> Car Parking</span>
+                                <span class="badge1 badge-assertive">{{SelectedOffer.TECarParks[0].RateMultiplier}}</span>
+                            </ion-item>
+                            <ion-item  ng-show="isGroupShown(group)">
+                                <div style="width:100%;overflow-y:scroll;margin-top:-10px">
+                                    <table class="table table-bordered" id="Table3" style="width:100%;margin-bottom:5px">               
+                                        <tr class="collapse-text-small9" style="background-color:#ffbe8f">
+                                            <!--<th>Type</th>
+                                            <th>#</th>-->
+											<!--<th>Cost Per Park</th>-->
+                                           <!-- <th>Cost(L)</th>-->
+                                            <!--<th>Total</th>-->
+											
+											
+                                        </tr> 
+                                        <tr ng-repeat="s in SelectedOffer.TECarParks" class="collapse-text-small9">
+                                            <td style="width:150px">{{s.PriceType | htmlToPlaintext}}</td><td style="text-align: right;">{{s.RateMultiplier | number}}</td><td style="text-align: right;"><span style="color:inherit;">{{s.Rate/100000 | number:2 }}</span></td><!--<td style="text-align: right;"><span style="color:inherit;">{{s.TotalPrice/10000000 | number:2 }}</span></td>-->
+                                        </tr> 
+                                    </table>   
+                                </div>         
+                            </ion-item>
+                        </div>
+                    </div>
+					
+					
+					<div ng-repeat="group in groups">
+                        <div ng-controller="CollapsablePanel1">
+                            <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                                <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                                <span style="font-size:10pt;">Special Conditions</span>
+								<span class="badge1 badge-assertive">{{SelectedOffer.SpecialConditions.length}}</span>
+                            </ion-item>
+                            <ion-item  ng-show="isGroupShown(group)">
+                                   <div style="width:100%;overflow-y:scroll;margin-top:-10px">
+                                    <table class="table table-bordered" id="Table3" style="width:100%">             
+                                        <tr class="collapse-text-small9" style="background-color:#ffbe8f">
+                                           <!-- <th>Condition</th>
+                                            <th>Price</th>-->
+											
+											
+                                        </tr> 
+                                        <tr ng-repeat="spl in SelectedOffer.SpecialConditions" class="collapse-text-small9">
+                                             <td nowrap>{{spl.SpecialConditionName | htmlToPlaintext}}</td>
+                                             <td>{{spl.Value | currencyDecimalFormat}}</td>
+                                        </tr> 
+                                    </table> 
+                               </div>									
+                            </ion-item>
+                        </div>
+                    </div>
+
+      <!--<div ng-repeat="group in groups">
+        <div ng-controller="CollapsablePanel1">
+          <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              <span style="font-size:10pt;">Special Conditions</span>
+              <span class="badge1 badge-assertive">{{SelectedOffer.SpecialConditions.length}}</span>
+          </ion-item>
+          <ion-item  ng-show="isGroupShown(group)">
+		  <div ng-if="SelectedOffer.SpecialConditions.length==0" style="color:#f00;text-align:center;font-size:100%;">No Data Found</div>
+      <div ng-if="SelectedOffer.SpecialConditions.length!=0"  style="width:100%;overflow-x:scroll;">
+            <table class="table table-bordered" id="Table3" style="width:100%;     margin: -10px 0;">
+               <tr style="font-size:8pt;" ng-repeat="spl in SelectedOffer.SpecialConditions">
+                    <td>{{spl.SPConditionType}}</td>
+                    <td style="text-align: right">{{spl.SpecialConditionName | htmlToPlaintext}}</td>
+                    <td style="text-align: right">{{spl.Value | currencyDecimalFormat}}</td>
+                </tr>    
+                
+            </table>
+            </div>
+          </ion-item>
+        </div>
+      </div>-->
+
+      <div ng-repeat="group in groups">
+        <div ng-controller="CollapsablePanel1">
+          <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              <span style="font-size:10pt;">Cost BreakUp</span>
+              <span class="badge1 badge-assertive">{{SelectedOffer.CostSplit[0].Heading4 | currencyDecimalFormat}}</span>
+          </ion-item>
+          <ion-item  ng-show="isGroupShown(group)">
+ <div ng-if="SelectedOffer.CostSplit[0].Elements.length==0" style="color:#f00;text-align:center;font-size:100%;">No Data Found</div>
+      <div ng-if="SelectedOffer.CostSplit[0].Elements.length!=0">
+             <div style="width:100%;overflow-y:scroll;margin-top:-10px">
+                                    <table class="table table-bordered" id="Table3" style="width:100%;">               
+                                        <tr class="collapse-text-small9" style="background-color:#ffbe8f">
+                                            <!--<th>Particular</th>
+                                            <th>Multiplier</th>
+                                            <th>Rate</th>
+                                            <th>Price</th>-->
+											
+											
+                                        </tr> 
+               
+                <tr style="font-size:8pt;" ng-repeat="cost in SelectedOffer.CostSplit[0].Elements">
+				     <td>{{$index+1}}</td>
+                    <td>{{cost.SubHeading1}}</td>
+                    <td style="text-align: right">{{cost.SubHeading2 | currencyDecimalFormat}}</td>  
+                    <td style="text-align: right">{{cost.SubHeading3 | currencyDecimalFormat}}</td>
+                    <td style="text-align: right">{{cost.SubHeading4/10000000 | number:2}}</td>
+                </tr>                
+            </table>
+			
+			</div>
+          </ion-item>
+        </div>
+      </div>  
+	  
+	  
+	  <!-- Discounted offer -->
+	  
+	  <div ng-repeat="group in groups">
+                        <div ng-controller="CollapsablePanel1">
+                            <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                                <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                                <span style="font-size:10pt;">Discount Summary</span>
+                               
+                            </ion-item>
+                            <ion-item  ng-show="isGroupShown(group)">
+                                <table class="table table-bordered" style="width:100%;    margin: -10px 0 0px -7px;">
+                                    <tr class="collapse-text-small9" style="background-color:#ffbe8f; font-weight: bold">
+                                       <!-- <td>#</td>
+                                        <td>{{SelectedOffer.DiscountDetails[0].Heading1}}</th>
+                                        <td>{{SelectedOffer.DiscountDetails[0].Heading2}}</td>  
+                                        <td>{{SelectedOffer.DiscountDetails[0].Heading3}}</td>
+                                        <td>{{SelectedOffer.DiscountDetails[0].Heading4}}</td>-->
+										
+										
+                                    </tr> 
+									
+									
+                                     <tr class="collapse-text-small9"  ng-repeat-start="disc in SelectedOffer.DiscountDetails[0].MainElements">
+                                        <td></td>
+                                        <td><b>{{disc.Title1}}</b></td>
+                                        <td style="text-align:right">{{disc.Title2 | number:2}}</td>
+                                        <td style="text-align:right">{{disc.Title3 | currencyDecimalFormat}}</td>
+                                        <td style="text-align:right" id="tdResidentialUnitCost" class="text-middle"><span style="color:inherit;">{{disc.Title4 | currencyDecimalFormat}}</span></td>
+                                    </tr> 
+                                    <tr ng-repeat-start="sub in disc.SubElements" class="collapse-text-small9">
+                                        <td>{{$index+1}}</td>
+                                        <td>{{sub.Details}}</td>
+                                        <td style="text-align:right" propname="tdSaleable"><span style="color:inherit;">{{sub.Percentage | number:2}}</span></td>
+                                        <td style="text-align:right" class="text-middle" id="tdBaseRate"><span style="color:inherit;">{{sub.Area | currencyDecimalFormat}}</span></td>
+                                        <td style="text-align:right" class="text-middle" id="tdBasePrice"><span style="color:inherit;">{{sub.Value}}</span></td>
+                                    </tr>
+         <tr ng-repeat="com in sub.Components" class="collapse-text-small9">
+             <td></td>
+             <td>{{com.Componts_title}}</td>
+             <td style="text-align:right" propname="tdSaleable"><span style="color:inherit;">{{com.Componts_percentage | number:2}}</span></td>  
+             <td style="text-align:right" propname="tdSaleable"><span style="color:inherit;">{{com.Componts_Area | currencyDecimalFormat}}</span></td>
+             <td style="text-align:right" propname="tdSaleable"><span style="color:inherit;">{{com.Componts_Value | currencyDecimalFormat}}</span></td>   
+         </tr> 
+         <tr ng-repeat-end></tr>
+         <tr ng-repeat-end></tr>
+										 
+                                    </tr>
+									
+									
+									
+									
+									
+									   
+                                   
+                                </table>            
+                            </ion-item>
+                        </div>
+                    </div>
+
+     
+
+    </div>
+   <div style="border:solid 2px #666666; margin-top: 5px"></div>
+      <div class="row" >
+      <div class="col"><div class="today-followupbtn" ng-click="SendEmail(SelectedOffer.generalDetails.OfferID,SelectedOffer.generalDetails.UnitID)" > Send Email</div></div>
+    </div>
+  </ion-list>
+  </ion-content>
+</ion-view>
+ 

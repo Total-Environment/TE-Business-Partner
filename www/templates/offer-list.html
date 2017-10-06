@@ -1,0 +1,398 @@
+<ion-view view-title="Offer Details" side="Center" class="animate-in-secondary bg" ng-controller="OfferApprovalList">
+<ion-content>
+<ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+
+<div ng-controller="CollapsablePanel1" style="margin-top: 10px">
+  <div ng-repeat="group in groups">
+    <div ng-controller="CollapsablePanel1">
+      <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#ccc;    border: none;" >
+        <span style="font-size:10pt;">Mr Cook A</span>
+        <span style="font-size: 10pt;padding: 3px;background-color: #77913b;border-radius: 3px;margin-left: 50px;">H13A1 | WoYM-TE</span>
+        <span style="font-size:10pt; float: right">WM</span>
+      </ion-item>
+                              
+                          </div>
+                      </div>
+      </div>
+
+<div style="background-color: #fff">
+    
+   
+    <div class="row collapse-text-small9" style="padding: 0; border-bottom: dotted 1px #ccc">
+    <div class="col">Offer Date: <b>01-Jul-17</b></div>
+    </div>
+   <div class="row collapse-text-small9" style="padding: 0; border-bottom: dotted 1px #ccc">
+    </div>
+    <div class="row collapse-text-small9" style="padding: 0; border-bottom: dotted 1px #ccc">
+    <div class="col">Saleable Area: <b>4,400</b></div>
+    <div class="col">Total: <b>1,61,57,900</b></div>
+    </div>
+</div>
+
+
+<ion-list>
+    <div ng-controller="CollapsablePanel1" style="margin-top: 10px">
+      <div ng-repeat="group in groups">
+        <div ng-controller="CollapsablePanel1">
+          <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+            <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            <span style="font-size:10pt;">Consideration</span>
+            <span class="badge1 badge-assertive">1,61,57,900</span>
+          </ion-item>
+          <ion-item  ng-show="isGroupShown(group)">
+            <table class="table table-bordered" style="width:100%;    margin: -10px 0 0px 0px;">
+              <tr class="collapse-text-small9" style="background-color:#ffbe8f; font-weight: bold"></tr> 
+                <tr class="collapse-text-small9">
+                  <td>1</td>
+                  <td><b>Cost of Residential Unit</b></td>
+                  <td style="text-align:right"></td>
+                  <td style="text-align:right"></td>
+                  <td style="text-align:right" class="text-middle">1.62</td>
+                </tr> 
+                <tr class="collapse-text-small9">
+                  <td></td>
+                  <td>BC</td>
+                  <td style="text-align:right" >3,800</td>
+                  <td style="text-align:right" class="text-middle">3,086</td>
+                  <td style="text-align:right" class="text-middle" >1.17</td>
+                </tr>
+                <tr class="collapse-text-small9">
+                    <td></td>
+                    <td>FSP</td>
+                    <td style="text-align:right" >100,000</td>
+                    <td style="text-align:right" class="text-middle">3,086</td>
+                    <td style="text-align:right" class="text-middle" >1.17</td>
+                  </tr>
+                <tr class="collapse-text-small9">
+                    <td></td>
+                    <td>AM</td>
+                    <td style="text-align:right" >3,900</td>
+                    <td style="text-align:right" class="text-middle">125</td>
+                    <td style="text-align:right" class="text-middle" >0.05</td>
+                  </tr>
+                  <tr class="collapse-text-small9">
+                      <td></td>
+                      <td>UT</td>
+                      <td style="text-align:right" >4,440</td>
+                      <td style="text-align:right" class="text-middle">105</td>
+                      <td style="text-align:right" class="text-middle" >0,05</td>
+                    </tr>
+                    <tr class="collapse-text-small9">
+                        <td></td>
+                        <td>AL</td>
+                        <td style="text-align:right" >150</td>
+                        <td style="text-align:right" class="text-middle">186</td>
+                        <td style="text-align:right" class="text-middle" >0.00</td>
+                      </tr>
+                      <tr class="collapse-text-small9">
+                          <td></td>
+                          <td>EAA</td>
+                          <td style="text-align:right" >200</td>
+                          <td style="text-align:right" class="text-middle">195</td>
+                          <td style="text-align:right" class="text-middle" >0.00</td>
+                        </tr>
+                        <tr class="collapse-text-small9">
+                            <td></td>
+                            <td>SUP</td>
+                            <td style="text-align:right" >50,000</td>
+                            <td style="text-align:right" class="text-middle">1</td>
+                            <td style="text-align:right" class="text-middle" >0.01</td>
+                          </tr>
+                          <tr class="collapse-text-small9">
+                              <td></td>
+                              <td>MC</td>
+                              <td style="text-align:right" >500</td>
+                              <td style="text-align:right" class="text-middle">145</td>
+                              <td style="text-align:right" class="text-middle" >0.01</td>
+                            </tr>
+                            <tr class="collapse-text-small9">
+                                <td></td>
+                                <td>MF</td>
+                                <td style="text-align:right" >3800</td>
+                                <td style="text-align:right" class="text-middle">210</td>
+                                <td style="text-align:right" class="text-middle" >0.08</td>
+                              </tr>
+                              <tr class="collapse-text-small9">
+                                  <td>2</td>
+                                  <td><b>CP</b></td>
+                                  <td style="text-align:right">4</td>
+                                  <td style="text-align:right">500,000</td>
+                                  <td style="text-align:right" class="text-middle">0.20</td>
+                                </tr> 
+              </table>            
+            </ion-item>
+          </div>
+        </div>
+    </div>
+
+    <div ng-controller="CollapsablePanel1" style="margin-top: 10px">
+        <div ng-repeat="group in groups">
+          <div ng-controller="CollapsablePanel1">
+            <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              <span style="font-size:10pt;">Payment Schedule</span>
+              <span class="badge1 badge-assertive">21,005,269</span>
+            </ion-item>
+            <ion-item  ng-show="isGroupShown(group)">
+              <table class="table table-bordered" style="width:100%;    margin: -10px 0 0px 0px;">
+                <tr class="collapse-text-small9" style="background-color:#ffbe8f; font-weight: bold"></tr> 
+                  <tr class="collapse-text-small9">
+                    <td>1</td>
+                    <td><b>HO</b></td>
+                    <td>24-Jun-17</td>
+                    <td style="text-align:right">0.16</td>
+                  </tr> 
+                  <tr class="collapse-text-small9">
+                      <td>2</td>
+                      <td><b>F</b></td>
+                      <td>24-Jun-17</td>
+                      <td style="text-align:right">0.16</td>
+                    </tr> 
+                    <tr class="collapse-text-small9">
+                        <td>3</td>
+                        <td><b>2</b></td>
+                        <td>24-Jun-17</td>
+                        <td style="text-align:right">0.16</td>
+                      </tr> 
+                      <tr class="collapse-text-small9">
+                          <td>4</td>
+                          <td><b>EXT</b></td>
+                          <td>24-Jun-17</td>
+                          <td style="text-align:right">0.16</td>
+                        </tr> 
+                        <tr class="collapse-text-small9">
+                            <td>5</td>
+                            <td><b>FLST</b></td>
+                            <td>24-Jun-17</td>
+                            <td style="text-align:right">0.16</td>
+                          </tr> 
+                          <tr class="collapse-text-small9">
+                              <td>6</td>
+                              <td><b>IP</b></td>
+                              <td>24-Jun-17</td>
+                              <td style="text-align:right">0.16</td>
+                            </tr> 
+                            <tr class="collapse-text-small9">
+                                <td>7</td>
+                                <td><b>FL</b></td>
+                                <td>24-Jun-17</td>
+                                <td style="text-align:right">0.16</td>
+                              </tr> 
+                              <tr class="collapse-text-small9">
+                                  <td>8</td>
+                                  <td><b>EMD</b></td>
+                                  <td>24-Jun-17</td>
+                                  <td style="text-align:right">0.16</td>
+                                </tr> 
+                                <tr class="collapse-text-small9">
+                                    <td>9</td>
+                                    <td><b>SL</b></td>
+                                    <td>24-Jun-17</td>
+                                    <td style="text-align:right">0.16</td>
+                                  </tr> 
+                                  <tr class="collapse-text-small9">
+                                      <td>10</td>
+                                      <td><b>EXE</b></td>
+                                      <td>24-Jun-17</td>
+                                      <td style="text-align:right">0.16</td>
+                                    </tr> 
+                                    <tr class="collapse-text-small9">
+                                        <td>11</td>
+                                        <td><b>FEN</b></td>
+                                        <td>24-Jun-17</td>
+                                        <td style="text-align:right">0.16</td>
+                                      </tr> 
+                                      <tr class="collapse-text-small9">
+                                          <td>12</td>
+                                          <td><b>ADV</b></td>
+                                          <td>24-Jun-17</td>
+                                          <td style="text-align:right">0.16</td>
+                                        </tr> 
+                                        <tr class="collapse-text-small9">
+                                            <td>13</td>
+                                            <td><b>FEN</b></td>
+                                            <td>24-Jun-17</td>
+                                            <td style="text-align:right">0.16</td>
+                                          </tr> 
+                                          <tr class="collapse-text-small9">
+                                              <td>14</td>
+                                              <td><b>1</b></td>
+                                              <td>24-Jun-17</td>
+                                              <td style="text-align:right">0.16</td>
+                                            </tr> 
+                                    
+                                    
+                </table>            
+              </ion-item>
+            </div>
+          </div>
+      </div>
+      <div ng-controller="CollapsablePanel1" style="margin-top: 10px">
+          <div ng-repeat="group in groups">
+            <div ng-controller="CollapsablePanel1">
+              <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                <span style="font-size:10pt;">Car Parking</span>
+                <span class="badge1 badge-assertive">4</span>
+              </ion-item>
+              <ion-item  ng-show="isGroupShown(group)">
+                <table class="table table-bordered" style="width:100%;    margin: -10px 0 0px 0px;">
+                  <tr class="collapse-text-small9" style="background-color:#ffbe8f; font-weight: bold"></tr> 
+                    <tr class="collapse-text-small9">
+                      <td>Regular Dependent Car Parks/ MLCP</td>
+                      <td><b>4</b></td>
+                      <td style="text-align:right">5.00</td>
+                    </tr> 
+                                
+                  </table>            
+                </ion-item>
+              </div>
+            </div>
+        </div>
+
+        <div ng-controller="CollapsablePanel1" style="margin-top: 10px">
+            <div ng-repeat="group in groups">
+              <div ng-controller="CollapsablePanel1">
+                <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                  <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                  <span style="font-size:10pt;">Special Conditions</span>
+                  <span class="badge1 badge-assertive">1</span>
+                </ion-item>
+                <ion-item  ng-show="isGroupShown(group)">
+                    <div style="width:100%;overflow-y:scroll;">
+                  <table class="table table-bordered" style="width:550px;    margin:0px 0 0px 0px;">
+                    <tr class="collapse-text-small9" style="background-color:#ffbe8f; font-weight: bold"></tr> 
+                      <tr class="collapse-text-small9">
+                        <td>Right to use additional garden areameasuring format Squar feet</td>
+                        <td><b>4</b></td>
+                      </tr> 
+                                  
+                    </table>    
+                    </div>        
+                  </ion-item>
+                </div>
+              </div>
+          </div>
+
+          <div ng-controller="CollapsablePanel1" style="margin-top: 10px">
+              <div ng-repeat="group in groups">
+                <div ng-controller="CollapsablePanel1">
+                  <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                    <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                    <span style="font-size:10pt;">Cost BreakUp</span>
+                    <span class="badge1 badge-assertive">1,61,57,900</span>
+                  </ion-item>
+                  <ion-item  ng-show="isGroupShown(group)">
+                    <table class="table table-bordered" style="width:100%;    margin: -10px 0 0px 0px;">
+                      <tr class="collapse-text-small9" style="background-color:#ffbe8f; font-weight: bold"></tr> 
+                        <tr class="collapse-text-small9">
+                          <td>1</td>
+                          <td>Construction cost</td>
+                          <td></td>
+                          <td></td>
+                          <td style="text-align:right">5.00</td>
+                        </tr> 
+
+                        <tr class="collapse-text-small9">
+                            <td>2</td>
+                            <td>Land cost</td>
+                            <td>4,440</td>
+                            <td>1,15,314</td>
+                            <td style="text-align:right">0.51</td>
+                          </tr> 
+
+                          <tr class="collapse-text-small9">
+                              <td>3</td>
+                              <td>Maintanance cost</td>
+                              <td>210</td>
+                              <td>3,800</td>
+                              <td style="text-align:right">0.08</td>
+                            </tr> 
+                                    
+                      </table>            
+                    </ion-item>
+                  </div>
+                </div>
+            </div>
+
+            <div ng-controller="CollapsablePanel1" style="margin-top: 10px">
+                <div ng-repeat="group in groups">
+                  <div ng-controller="CollapsablePanel1">
+                    <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#03a1fb;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                      <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                      <span style="font-size:10pt;">Discount Summary</span>
+                      <span class="badge1 badge-assertive">1,61,57,900</span>
+                    </ion-item>
+                    <ion-item  ng-show="isGroupShown(group)">
+                        <div style="width:100%;overflow-y:scroll;">
+                            <table class="table table-bordered" style="width:350px;    margin:0px 0 0px 0px;">
+                        <tr class="collapse-text-small9" style="background-color:#ffbe8f; font-weight: bold"></tr> 
+                          <tr class="collapse-text-small9">
+                            <td></td>
+                            <td>Effective discount on base price</td>
+                            <td>22.26</td>
+                            <td>1,200</td>
+                            <td style="text-align:right">45,90,000</td>
+                          </tr> 
+  
+                          <tr class="collapse-text-small9">
+                              <td>1</td>
+                              <td>Price discount</td>
+                              <td>21.97</td>
+                              <td>1,200</td>
+                              <td style="text-align:right">45,60,000</td>
+                            </tr> 
+  
+                            <tr class="collapse-text-small9">
+                                <td></td>
+                                <td>Towards Basic Cost</td>
+                                <td>21.97</td>
+                                <td>1,200</td>
+                                <td style="text-align:right">45,60,000</td>
+                              </tr> 
+
+                              <tr class="collapse-text-small9">
+                                  <td></td>
+                                  <td>Towards Payment Terms</td>
+                                  <td>0/td>
+                                  <td>0</td>
+                                  <td style="text-align:right">0</td>
+                                </tr>
+                                <tr class="collapse-text-small9">
+                                    <td>2</td>
+                                    <td>Customisation Credit</td>
+                                    <td>0/td>
+                                    <td>0</td>
+                                    <td style="text-align:right">0</td>
+                                  </tr>
+                                  <tr class="collapse-text-small9">
+                                      <td>3</td>
+                                      <td>Special Conditions Discount</td>
+                                      <td>0.14/td>
+                                      <td>0</td>
+                                      <td style="text-align:right">30000</td>
+                                    </tr> 
+                                      
+                        </table>     
+                        </div>       
+                      </ion-item>
+                    </div>
+                  </div>
+              </div>
+
+              <div style="border:solid 2px #666666; margin-top: 5px"></div>
+              <div class="row" >
+              <div class="col"><div class="today-followupbtn" ng-click="SendEmail(SelectedOffer.generalDetails.OfferID,SelectedOffer.generalDetails.UnitID)" > Send Email</div></div>
+            </div>
+  </ion-list>
+    
+
+    
+         
+          
+        
+
+  
+  </ion-content>
+</ion-view>
+ 

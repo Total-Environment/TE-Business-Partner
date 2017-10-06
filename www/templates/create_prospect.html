@@ -1,0 +1,180 @@
+<ion-view view-title="Create Prospect" side="Center" class="animate-in-primary" class="createpropect">
+<ion-content ng-controller="MyCtrl1">
+ <ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+    <div class="time-pros">{{datevalue | date:'hh:mm a'}}</div>
+    <div class="date-pros">{{datevalue | date:'dd-MMM-yy'}}</div>
+    <div class="clear"></div>
+<div >
+<form  name="form" novalidate="" class="createProspectForm">
+  <div class="row">
+      <div class="title20" required>
+        <select class="select" style="border:none; color: blue; margin-top: 7px;" ng-model="Salutation" ng-change="getValuefromtitle(titlename)" data-ng-options="s as s.name for s in salutaionItems">
+        <option value="">Title</option></select>
+      </div>
+      <div class="prospect-edit40" ng-hide="Salutation.name=='M/S'"> <input type="text" placeholder="First Name"  style="color: blue;margin-left:13px;margin-top: 4px;" ng-model="FirstName" required></div>
+      <div ng-if="Salutation.name=='M/S'" class="prospect-edit40"> <input type="text" placeholder="Company Name" style="color: blue;margin-left:13px;margin-top: 4px;" ng-model="FirstName" required></div>
+      <div  class="prospect-edit40" ng-hide="Salutation.name=='M/S'"><input type="text" placeholder="Last Name" style="color: blue;margin-top: 3px; margin-left: 53px;" ng-model="LastName" required></div>
+  </div>
+  <div class="row" >
+      
+      <!-- <select  class="select" style="margin-left:0px;width: 127px;color: #aaaaaa;" ng-model="country" ng-change="getValuefromCountryCode(country)" data-ng-options="country.name for country in countries" required>
+        <option disabled value="">Select Country</option> -->
+
+        <select  class="select" style=" margin-left:0px;width: 127px;color: blue;" ng-model="country" ng-change="getValuefromCountryCode(country)" ng-init="country=countries[0]" data-ng-options="country.name for country in countries" required></select>
+
+      </select>
+    
+     
+        <input type="text" style="margin-top: 0px;margin-left: -25px;color: blue;width: 54px;" ng-model="country.dial_code">
+     
+     
+        <input type="text" name="phone" style="margin-left: -13px;color: blue;" data-phone ng-model="PhoneNo" placeholder="Mobile" required>
+      </div>
+
+  <div class="row">
+      <div class="prospect-edit90"> <input type="text" data-email ng-model="EmailId" name="email" placeholder="Email" style="color: blue; width:100%; margin-left: 6px;"  required></div>
+      <!--<div class="prospect-edit10"><i class="icon-google-plus icon-org" style="color:#666; font-size:12pt;" aria-hidden="true" ng-click="showPromptformail()"></i></div>-->
+  </div>
+
+  <div class="row">
+      <div class="prospect-edit90"><input type="text" placeholder="Organization" style="color: blue; width:100%; margin-left: 6px;" ng-model="organization" required></div>
+  </div>
+
+   <div class="row">
+      <div class="prospect-edit90"><input type="text" placeholder="Designation" style="color: blue;width:100%; margin-left: 6px;" ng-model="designation" required></div>
+  </div>
+
+   <div class="row">
+      <div class="prospect-edit90"><input type="text" placeholder="Address" style="color: blue;width:100%; margin-left: 6px;" ng-model="address" required></div>
+  </div>
+
+  <div class="row">
+      <div class="prospect-edit90"><input type="text" placeholder="Area/City/Country" style="color: blue; width:100%; margin-left: 6px;" ng-model="city" required></div>
+  </div>
+  <div style="border:solid 2px #666666"></div>
+        <div class="row" style="padding:0">
+             <div class="col">
+                <select style=" width:100%; font-size:10pt; margin-top: 6px;color:blue;" class="select" style="text-trasform:uppercase" ng-model="FirstConnect" ng-options="s.PickListItemName for s in FirstConnectList" ng-change="GetFirstConnectModeLists(FirstConnect)" value="{{item}}"  required selected>{{PickListItemName}}
+                  <option disabled value="">First Connect</option></select></div>            
+             <div class="col">
+                  <select style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select"  ng-model="firstconnectmode" ng-options="x.Description for x in FirstConnectModeValue" ng-change="getFirstConnectMode(firstconnectmode)" value="{{item}}"  required selected>{{s.Description}}
+                  <option disabled value="">First Connect Details</option></select></div>
+             </div>
+
+    <div class="row"  style="padding:0; ">
+              <div class="col">             
+                  <select style=" width:100%; font-size:10pt;color:blue;text-trasform:uppercase;" class="select" ng-model="primarysource" ng-options="a.PickListItemName for a in primarysourceList" ng-change="SecondarySourceLists(primarysource)" value="{{item}}"  required selected>{{a.PickListItemName}}
+                  <option disabled value="">Primary Source</option>
+                  </select>
+               </div>
+            <div class="col">
+             <label class="">
+              <select class="select" style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select"  ng-model="secondarysource" ng-options="a.PickListItemName for a in SecondarySourceList"  value="{{item}}"  required selected>
+              <option disabled value="">Secondary Source</option>
+              </select>
+             </label>
+           </div>
+    </div>
+
+     <div class="row" style="padding:0">
+          <div class="col" >
+               <select style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select" ng-model="SalesEngine" ng-options="x.PickListItemName for x in SalesEngineList" ng-change="getSalesCtrl()" value="{{item}}"  required selected>{{PickListItemName}}
+                  <option  disabled value="">Sales Engine</option>
+              </select>   
+         </div>
+          <div class="col">             
+             <select style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select"  ng-model="citychoice" ng-options="s.PickListItemName for s in CityChoiceList" ng-change="PrefferedLocationList(citychoice);" value="{{item}}"  required selected>{{PickListItemName}}
+                <option disabled value="">City</option>
+             </select>
+         </div>
+
+         
+          <!--<div class="col" ng-controller="ByCampaignCtrl">
+                <div ng-controller="MyCtrl1">-->
+                    <!--<select ng-model="selectedItem" style=" width:100%; font-size:10pt;" class="select">-->
+                    <!--<select class="select" style="text-trasform:uppercase" ng-model="selitem" ng-options="s.Name for s in controls" ng-change="getCampaignValue()" value="{{item}}"  selected>{{Name}}
+                          <option value="">Select</option>
+                    </select>
+               </div>
+         </div>-->
+     </div>
+
+     <div class="row"  style="padding:0; ">
+              <div class="col">
+             <label class="">
+              <select class="select" style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select"  ng-model="location" ng-options="a.PickListItemName for a in PrefferedLocationList"  value="{{item}}"  required selected ng-change="GetOriginValues(location);">
+              <option disabled value="">Preffered Location</option>
+              </select>
+             </label>
+           </div>
+
+           <!--   <div class="col">
+             <label class="">
+              <select class="select" style=" width:100%; font-size:10pt;text-trasform:uppercase;" class="select"  ng-model="Origin" ng-options="a.PickListItemName for a in OriginList"  value="{{item}}"  required selected>
+              <option disabled value="">Origin</option>
+              </select>
+             </label>
+           </div> -->
+            
+    </div>
+
+    
+     <div style="border:solid 2px #666666"></div>
+     <div class="row" style="padding:0">
+       
+          
+        <select style="width:100%; font-size:10pt; margin-top: 6px;margin-left:10px;color:blue;text-trasform:uppercase"  class="select"  ng-model="pselitems"   ng-options="s.ProjectName for s in projectList"  value="{{item}}"  required multiple>
+            <option disabled value=""  selected>Interested Projects</option>
+           
+            </select>
+       
+        
+     </div> 
+     <div style="margin-left:10px;" ng-repeat="prj in pselitems">{{prj.ProjectName}}</div>
+    
+    <div style="border:solid 2px #666666"></div>
+    <div class="row" style="padding:0">
+       
+        <div class="col">                 
+            <select style=" width:100%; font-size:10pt; margin-top: 6px;text-trasform:uppercase;color:blue;" class="select"  ng-model="pselitem" ng-options="s.ProjectName for s in pselitems" ng-change="GetAllProductList(pselitem);" value="{{item}}"  selected required>{{s.ProjectName}}
+            <option disabled value="">Select Project</option></select>
+        </div>
+     </div> 
+    <div style="border:solid 2px #666666"></div>
+    <div class="row" style="padding:0">
+          <div class="col">
+                <div>
+                  <select style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select" ng-model="Productselitem" ng-options="s.ProductName for s in SubProduct" ng-change="getProductDetails()" value="{{item}}"  selected required> {{s.ProductName}}
+                  <option disabled value="">Product</option></select>
+               </div>
+         </div>
+         <div class="col" > 
+             <select style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select"  ng-model="Specification" ng-options="s.SpecificationName for s in Specifications" ng-change="getSpecificationDetails()" value="{{item}}"  selected required>{{s.SpecificationName}}
+             <option disabled value="">Specification</option> </select>
+         </div>
+     </div>
+    <!-- <div style="border:solid 2px #666666"></div>
+    <div class="row" style="padding:0">
+          <div class="col">
+                <div style="text-align: center;margin-top: 4px;"> Assigned To</div>
+         </div>
+          <div class="col">
+               <select style=" width:100%; font-size:10pt;" class="select" style="text-trasform:uppercase" ng-model="AssignedLead" ng-options="s.UserName for s in AssignedData" ng-change="getAssignedValue(AssignedLead)" value="{{item}}"  selected required>{{s.UserName}}
+               <option disabled value="">Select</option></select>
+         </div>
+     </div> -->
+     <div style="border:solid 2px #666666"></div>
+
+      <label class="item item-input">
+          <textarea placeholder="Notes" style="color:blue;border:none" name="notes" data-notes ng-model="notes" ></textarea>
+      </label>
+    <div style="border:solid 2px #666666"></div>
+    <!-- <ion-spinner icon="spiral"></ion-spinner> -->
+  <div>
+      <!-- <button class="button1 button button-full" >Submit</button> -->
+      <a class="button1 button button-full" ng-click="SaveContact();" style="width: 100%;color: #fff !important;">Submit</a>
+  </div>
+ </form>
+ </div>
+</ion-content>
+</ion-view>

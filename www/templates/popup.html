@@ -1,0 +1,22 @@
+<ion-modal-view >
+  <ion-header-bar style="background-color:#e67e22">
+    <h1 class="title">upload</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()"></button>
+    </div>
+  </ion-header-bar>
+  <ion-content ng-controller="MpinCtrl">
+    <form ng-submit="doLogin()">
+       
+      <div class="list" style="width: 93%;margin:100px auto;">
+        <label class="item item-input">
+          <input type="file" style="    border-bottom: solid 1px #ccc !important;border:none;padding: 10px;height: 40px;" placeholder="Upload" ng-model="loginData.username">
+        </label>
+        <label class="item">
+          <!-- <button class="button button-block button-positive" type="submit"></button> -->
+          <a href="#/app/lead"><button class="button1 button button-full" >Upload</button></a>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

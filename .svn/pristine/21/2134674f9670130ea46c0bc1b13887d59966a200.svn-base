@@ -1,0 +1,119 @@
+<ion-view view-title="Reimbursement" side="Center" class="animate-in-primary bg">
+  <ion-content ng-controller="ReimbursementController as vm">
+  <ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+<style>
+.draft-Status
+{
+        border-left: solid 5px #03a1fb !important;
+}
+.pending-Status
+{
+        border-left: solid 5px #f8981d !important;
+}
+.approved-Status
+{
+        border-left: solid 5px #2DA72D !important;
+}
+</style>
+    <div class="panel-head">Claims</div>
+    <div class="collapse-view collapse-temp-new" ng-repeat="claimBook in vm.ClaimBookCollectionForMgrApproval" ng-class="{'draft-Status': claimBook.Status == 'Draft','processed-Status': claimBook.Status == 'Pending For Approval','approved-Status': claimBook.Status == 'Approved'||claimBook.Status == 'Finance User Approved'}">
+    <a ui-sref="app.Reimbursement-manager-view({claimbookid:claimBook.UniqueId})" style="text-decoration:none;">
+      <div class="row ion-pad-none">
+          <div class="col ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-20 text-small">Employee</div>
+                <div class="col">{{claimBook.EmployeeName}}</div>          
+            </div>
+          </div>
+          <div class="col ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-20 text-small">Claim Date:</div>
+                <div class="col col-80">{{claimBook.ClaimDate  | date : "dd-MMM-yy" }}</div>          
+            </div>
+          </div>     
+      </div>
+      <div class="row ion-pad-none">
+          <div class="col ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-20 text-small">Type:</div>
+                <div class="col">{{claimBook.ClaimType.Name}}</div>          
+            </div>
+          </div> 
+          <div class="col ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Amount:</div>
+                <div class="col col-50">{{claimBook.TotalClaimAmount}}</div>          
+            </div>
+          </div>      
+      </div>
+      <div class="row ion-pad-none">
+        <div class="col col-20 text-small">Description:</div>
+        <div class="col">{{claimBook.Remarks}}</div>       
+      </div></a>  
+      <div class="row ion-pad-none">
+        <div class="col text-small ">Status:</div>
+        <div nclass="col">{{claimBook.Status}}</div>
+
+        <div class="col">
+          <div class="redbtn" style="margin:0 !important;font-size: 10pt;">Reject</div>
+        </div>   
+        <div class="col">
+          <div ng-if="claimBook.Status == 'Submitted for Approval'" class="today-followupbtn" style="margin:0 !important;font-size: 10pt;" ng-click="vm.saveClaimBook('Manager Approved',claimBook);">Approve</div>
+          <div  ng-if="claimBook.Status == 'Manager Approved'" class="today-followupbtn" style="margin:0 !important;font-size: 10pt;" ng-click="vm.saveClaimBook('FundCenter Owner Approved',claimBook);">Approve</div></div>         
+        </div>
+        
+  </div>
+<!--   <a href="#/app/Reimbursement-manager-view" style="text-decoration:none;"> 
+  <div class="collapse-view collapse-temp-warm">
+      <div class="row ion-pad-none">
+          <div class="col ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-20 text-small">Employee</div>
+                <div class="col">Manjunath T R</div>          
+            </div>
+          </div>     
+      </div>
+      <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Type:</div>
+                <div class="col col-50">Travel</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Amount:</div>
+                <div class="col col-50">12,000</div>          
+            </div>
+          </div>      
+      </div>
+      <div class="row ion-pad-none">
+          <div class="col ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-20 text-small">Date:</div>
+                <div class="col col-80">26-Dec-2016</div>          
+            </div>
+          </div>     
+      </div>
+      <div class="row ion-pad-none">
+        <div class="col col-20 text-small">Description:</div>
+        <div class="col">Remarks text will be show</div>       
+      </div>
+      <div class="row ion-pad-none">
+        <div class="col text-small ">Status: </div>  
+        <div class="col"><div class="redbtn" style="margin:0 !important;font-size: 10pt;" >Reject</div></div>   
+        <div class="col"><div class="today-followupbtn" style="margin:0 !important;font-size: 10pt;">Approve</div></div>         
+      </div>
+          
+  </div>
+  </a> -->
+
+        
+  </div>
+  
+  
+</ion-tabs>
+  </ion-content>
+  
+</ion-view>
+ 

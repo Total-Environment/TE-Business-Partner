@@ -1,0 +1,252 @@
+<ion-view view-title="Reimbursement" side="Center" class="animate-in-primary bg">
+  <ion-content ng-controller="ReimbursementController as vm">
+  <ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+  <style>
+.new_Btn {
+    line-height: 2.3;
+}
+
+#html_btn {
+ display:none;
+}
+    </style>
+    <script>
+      $('.new_Btn').bind("click" , function () {
+        $('#html_btn').click();
+    });
+    </script>
+    <div class="panel-head">Claim Item</div>
+    <div class="collapse-view collapse-temp-new">
+      <div style="background-color:#ffde00; font-size:9pt;color:#000; padding:0 5px">Pending for Approval</div>
+      <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim No</div>
+                <div class="col col-50">{{vm.ClaimBookSelected.UniqueId}}</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Type:</div>
+                <div class="col col-50">{{vm.ClaimBookSelected.TEClaimType.Name}}</div>          
+            </div>
+          </div>      
+      </div>
+      <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Amount:</div>
+                <div class="col col-50">10000</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Date:</div>
+                <div class="col col-50">{{vm.ClaimBookSelected.ClaimDate  | date : "dd-MMM-yy" }}</div>          
+            </div>
+          </div>      
+      </div>
+      <div class="row ion-pad-none">
+        <div class="col col-20 text-small">Description:</div>
+        <div class="col">{{vm.ClaimBookSelected.Remarks}}</div>       
+      </div>          
+  </div>
+<!--    vm.ClaimItem
+ -->
+  <div class="row ion-row-align">
+    <div class="col" style="padding:9px 5px; color:#aaaaaa">Category</div>
+    <div class="col col-67" style="padding: 0 5px;">
+        <!-- <select style=" width:100%; font-size:10pt; padding: 7px 0;" class="select Project" style="text-trasform:uppercase"   selected>
+          <option value="">Select</option></select>
+      </div> -->
+    <select style=" width:100%; font-size:10pt; padding: 7px 0;" class="select Project" ng-model="vm.ClaimItem.ClaimCategory.Name">
+       <option ng-selected='vm.ClaimItem.ClaimCategory.Name === claimCategory.Name'
+        ng-repeat="claimCategory in vm.ClaimCategoryCollection track by $index" value="{{claimCategory.UniqueId}}">{{claimCategory.Name}}
+        </option>                                         
+    </select>
+    </div>
+    </div> 
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 0 5px;"><input type="text" placeholder="From Date" class="input-area" required></div>
+      <div class="col" style="padding: 0 5px;"><input type="text" placeholder="To Date" class="input-area" required></div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+    <div class="col" style="padding: 10px 5px; color:#aaaaaa">From</div>
+      <div class="col" style="padding: 0 5px;"><input type="text" ng-model="vm.ClaimItem.FromPlace" class="input-area" required></div>
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">To</div>
+      <div class="col" style="padding: 0 5px;"><input type="text" ng-model="vm.ClaimItem.ToPlace" class="input-area" required></div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">Job AssignedBy</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <input ng-model="vm.ClaimItem.JobAssignedBy" type="text" placeholder="" class="input-area" required>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+    <div class="col" style="padding: 10px 5px; color:#aaaaaa">Rate</div>
+      <div class="col" style="padding: 0 5px;"><input type="text" class="input-area" required></div>
+      <div style="padding:9px 5px; color:#aaaaaa">Unit</div>
+      <div class="col" style="padding: 0 5px;">
+     <select style=" width:100%; font-size:10pt; padding: 7px 0;text-trasform:uppercase;" ng-model="vm.ClaimItem.Unit">
+             <!-- <option ng-selected='vm.ClaimItem.Unit === claimUnit.Name'
+              ng-repeat="claimUnit in vm.ClaimUnitCollection track by $index" value="{{claimUnit.UniqueId}}">{{claimUnit.Name}}
+              </option>  -->                                        
+      </select></div>
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">Quantity</div>
+      <div class="col" style="padding: 0 5px;"><input type="text" class="input-area" required></div>
+    </div> 
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">Merchant</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <input ng-model="vm.ClaimItem.Merchant" type="text" placeholder="" class="input-area" required>
+      </div>
+    </div>
+<!--     <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">Base Amount</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <input ng-model="vm.ClaimItem.BaseAmount" type="text" placeholder="" class="input-area" required>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">Central GST</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <input ng-model="vm.ClaimItem.CentralGST" type="text" placeholder="" class="input-area" required>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">State GST</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <input ng-model="vm.ClaimItem.StateGST" type="text" placeholder="" class="input-area" required>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">CESS</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <input ng-model="vm.ClaimItem.CESS" type="text" placeholder="" class="input-area" required>
+      </div>
+    </div> -->
+    <div class="clear"></div>
+    <div style="border:solid 2px #666666"></div>
+   <div class="row ion-row-align">
+    <div class="col" style="padding:9px 5px; color:#aaaaaa">Mode</div>
+    <div class="col col-67" style="padding: 0 5px;">
+    <select style=" width:100%; font-size:10pt; padding: 7px 0;" ng-model="vm.ClaimItem.Mode">
+       <option ng-selected='vm.ClaimItem.Mode === mode'
+        ng-repeat="mode in vm.pickListTransportMode track by $index">{{mode}}
+        </option>                                         
+    </select>
+    </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding:9px 5px; color:#aaaaaa">Currency</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <select style=" width:100%; font-size:10pt; padding: 7px 0;" class="select Project" style="text-trasform:uppercase"   selected>
+          <option value="">Select</option></select>
+      </div>
+    </div>
+
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">Amount</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <input ng-model="vm.ClaimItem.BaseAmount" type="text" placeholder="" class="input-area" required>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">Amount in INR</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <input ng-model="vm.ClaimItem.AmountInINR" type="text" placeholder="" class="input-area" required>
+      </div>
+    </div> 
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">Paid by</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <!-- <input ng-model="vm.ClaimItem.IsPaidByCompany" type="text" placeholder="" class="input-area" required> -->
+        <select style=" width:100%; font-size:10pt; padding: 7px 0;" style="text-trasform:uppercase" ng-model="vm.PaidBy">
+          <option value="1">Employee</option>
+          <option value="2">Company</option></select>
+      </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">Charged to</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <select style=" width:100%; font-size:10pt; padding: 7px 0;" style="text-trasform:uppercase" ng-model="vm.ChargedTo">
+          <option value="1">Company</option>
+          <option value="2">Customer</option>
+          <option value="3">Vendor</option></select>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">Entity Code</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <input ng-model="vm.ClaimItem.EntityCode" type="text" placeholder="" class="input-area" required>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">WBSCode</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <input ng-model="vm.ClaimItem.WBSCode" type="text" placeholder="" class="input-area" required>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">Bill No</div>
+      <div class="col col-67" style="padding: 0 5px;">
+        <input ng-model="vm.ClaimItem.BillNo" type="text" placeholder="" class="input-area" required>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 10px 5px; color:#aaaaaa">Attach Proof</div>
+      <div class="col">
+        <div class="new_Btn" >Choose</div><input id="html_btn" type='file'" />
+      </div>
+      <div class="col col-20" style="margin-top: 7px;"><i class="icon ion-camera" style="font-size: 18pt;color: #808080;"></i></div>
+    </div> 
+    <div class="clear"></div>
+    <div class="row ion-row-align">
+      <div class="col">
+        <div class="row ion-row-align">
+        <div class="col ion-icon-align"><i class="icon ion-image"></i></div>
+        <div class="col ion-icon-align"><i class="icon ion-image"></i></div>
+        <div class="col ion-icon-align"><i class="icon ion-image"></i></div>
+        <div class="col ion-icon-align"><i class="icon ion-image"></i></div>
+        <div class="col ion-icon-align"><i class="icon ion-image"></i></div>
+        <div class="col ion-icon-align"><i class="icon ion-image"></i></div>
+        <div class="col ion-icon-align"><i class="icon ion-image"></i></div>
+        <div class="col ion-icon-align"><i class="icon ion-image"></i></div>
+        <div class="col ion-icon-align"><i class="icon ion-image"></i></div>
+        </div>
+      </div>
+    </div> 
+    <div class="row ion-row-align">
+      <div class="col" style="padding: 0 5px;"><textarea class="textarea" placeholder="Justification..." data-notes ng-model="vm.ClaimItem.Justification" name="notes" required></textarea></div>
+    </div> 
+    <div style="border:solid 2px #666666"></div>
+      <div class="row" >
+      <div class="row" >
+      <div class="col"><div class="cancelbtn" ><a ui-sref="app.Reimbursement-view({claimbookid:vm.ClaimBookSelected.UniqueId})" style="text-decoration:none; color:#fff !important;">Cancel</a></div></div>
+      <div class="col"><div ng-click="vm.saveClaimItem();"  class="today-followupbtn"><a style="text-decoration:none; color:#fff !important;">Save</div></div>
+<!--        <div class="col"><div class="today-followupbtn" ><a href="#/app/Reimbursement-add-item" style="text-decoration:none; color:#fff !important;">Modify</div></div> -->
+    </div>
+    </div>
+</ion-tabs>
+  </ion-content>
+</ion-view>
+ 

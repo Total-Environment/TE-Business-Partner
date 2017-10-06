@@ -1,0 +1,448 @@
+<ion-view view-title="Prospect Details" class="animate-in-secondary bg">
+   <ion-content >
+     <ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+      <div ng-controller="ShowHideCtrl">
+         <div class="collapse-view collapse-temp-warm"   >
+            <ul>
+                <li>
+                	<div class="row" style="padding: 0px;">
+                  <div class="col col-50 collapse-text-head Saleste_ellipsis_text">Anil Baradia</div>
+                  <div class="col table-cells " style="color:rgb(248, 152, 29)">LTF |   
+                    <span class="col-25 table-cells " style="color:#1da1f8">T20</span></div>
+                    <div class="col-25 table-cells "  style="color:#808080; text-align:right; font-size:12pt;padding-right: 20px;"><i class="icon ion-ios-telephone" ng-click="ShowHide()"></i></span></div>
+                 </div>
+          <!--addinf showhiode div for phone calls   -->
+         
+          <div ng-show = "IsVisible" class="ph-eml-div">
+          <i ng-click="ShowHide()" class="icon-fa-times close"  aria-hidden="true"></i>
+           <div class="row">
+            <div class="col"><div class="today-followupbtn">Click To Call</div></div>
+           <div class="col"><a href="tel:{{Mobile}}" style="text-decoration:none;"><div class="today-followupbtn">Direct Call</div></a></div>
+          </div>
+         </div>
+
+         <!--adding email showhide div-->
+         <!--<div ng-show = "IsVisible1" class="ph-eml-div" ng-controller="EmailController">
+        <i class="icon ion-android-mail" style="font-size:14pt; color:#808080;" ng-click="ShowHide1()"></i>
+          <span style="padding:0 5px; font-size:11pt;">{{Email}}</span>
+          <i ng-click="ShowHide1()" class="icon-fa-times close" aria-hidden="true"></i>
+         <button type="button"  class="call-btn" ng-click="sendEmail()">Send Email</button>
+         </div>-->
+
+
+                <!--<div class="row" style="padding: 0px;">
+                  <div class="col col-20 collapse-text-small-stage">Assigned</div>
+                  <div class="col collapse-text-small">ESV:0.00</div>
+                  <div class="col collapse-text-small">EEV:0.00</div>
+                  <div class="col collapse-text-small" style="text-align:right">ESD:29-Jun-17</div>
+                </div>-->
+                <div class="dot-line"></div>
+                <!--<div class="row" style="padding: 0px;">
+                  <div class="col collapse-text-small"><b>SC Name: Kiran</b></div>
+                  <div class="col collapse-text-small" style="text-align:right"><b>ASC: Nagesh dadithota</b></div>
+                </div>-->
+                <div class="row" style="padding: 0px;">
+                  <div class="col collapse-text-small"><b>Anand kumar</b></div>
+                  <div class="col-20 collapse-text-small" style="text-align:right">
+                    
+                    <div class="col nhwc-bt btn-group" style="color: rgb(255, 255, 255);background-color: rgb(125, 125, 125);"><b>New</b></div>
+                  </div>
+                </div>
+                <div class="dot-line"></div>
+                
+            
+              </li>
+              </ul>
+              </div>
+
+     
+
+
+
+
+    <ion-list>
+    <div ng-controller="CollapsablePanel">
+        <div ng-repeat="group in groups" >
+          <ion-item class="item-stable item-icon-right" style="color:#fff"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            Personal Details
+          </ion-item>
+          <ion-item  ng-show="isGroupShown(group)" style="background-color: #fff;">
+          	<div id="prospectview"  class="col-bg-white">
+               <div ng-hide="editorEnabled">
+                <div class="row">
+                  <div class="prospect-edit-icon"><i class="icon-google-edit icon-pros" ng-click= "enableEditor()" aria-hidden="true"></i> </div>
+                    <div class="col col-25"><img src="img/prf-img.png" /></div>
+                    <div class="col">
+                      <div class="collapse-text-head">Anil Baradia</div>
+                      <div class="collapse-prf-text"><i class="icon-google-univercity icon-pros"  aria-hidden="true"></i> Total Environment</div>
+                      <div class="collapse-prf-text"><i class="icon-google-phone icon-pros" aria-hidden="true"></i> +91 9743024533</div>
+                      </div>
+                   </div>
+                      <div class="collapse-prf-text1"><i class="icon-google-email icon-pros" aria-hidden="true"></i>anil.baradia@gmail.com</div>
+                      <div class="collapse-prf-text1"><i class="icon-google-home icon-pros" aria-hidden="true"></i> #53, 1st Floor, 5th cross, 6th Main</div>
+                      <div class="collapse-prf-text1"><i class="icon-google-location icon-pros" aria-hidden="true"></i> BHEL Layout, Bangalore 56</div>
+                  </div>
+                 </div>
+              <!-- <div class="row" > -->
+                <div ng-show="editorEnabled" >
+                  
+                  <div class="createProspectForm">
+                  <div class="row">
+                  <div class="title20" required>
+                    <select class="select" style="border:none; color:#aaaaaa; margin-top: 7px;" ng-model="FormSalutation" ng-change="getValuefromtitle(titlename)" data-ng-options="s as s.name for s in salutaionItems">
+                    <option value="">Title</option></select>
+                  </div>
+                  <div class="prospect-edit40" ng-hide="Salutation.name=='M/S'"> <input type="text" placeholder="First Name"  style="color:#0000ff;margin-left:13px;margin-top: 4px;" ng-model="vm.FormFirstName" required></div>
+                  <div ng-if="Salutation.name=='M/S'" class="prospect-edit40"> <input type="text" placeholder="Company Name" style="color:#0000ff;margin-left:13px;margin-top: 4px;" ng-model="vm.FormFirstName" required></div>
+                  <div  class="prospect-edit40" ng-hide="Salutation.name=='M/S'"><input type="text" placeholder="Last Name" style="color: #0000ff;margin-top: 3px; margin-left: 53px;" ng-model="vm.FormLastName" required></div>
+              </div>
+              <div class="row" >
+                  
+             
+
+                   <select  class="select" style=" margin-left:0px;width: 127px;color: blue;" ng-model="country" ng-change="getValuefromCountryCode(country)" ng-init="country=countries[0]" data-ng-options="country.name for country in countries" required></select>
+                
+                 
+                    <input type="text" style="margin-top: 0px;margin-left: -25px;color: #aaaaaa;width: 54px;" ng-model="FormContryCode">
+                 
+                 
+                    <input type="text" name="phone" style="margin-left: -13px;color:#0000ff;" data-phone ng-model="vm.FormMobile" placeholder="Mobile" required>
+                  </div>
+
+              <div class="row">
+                  <div class="prospect-edit90"> <input type="text" data-email ng-model="vm.FormEmail" name="Email" placeholder="Email" style="color: #0000ff; width:100%; margin-left: 6px;"  required></div>
+            
+              </div>
+
+              <div class="row">
+                  <div class="prospect-edit90"><input type="text" placeholder="Organization" style="color:  #0000ff; width:100%; margin-left: 6px;" ng-model="vm.FormOrganisation" required></div>
+              </div>
+
+               <div class="row">
+                  <div class="prospect-edit90"><input type="text" placeholder="Designation" style="color: #0000ff; width:100%; margin-left: 6px;" ng-model="vm.FormProfession" required></div>
+              </div>
+
+               <div class="row">
+                  <div class="prospect-edit90"><input type="text" placeholder="Area" style="color: #0000ff; width:100%; margin-left: 6px;" ng-model="vm.FormArea" required></div>
+              </div>
+
+              <div class="row">
+                  <div class="prospect-edit90"><input type="text" placeholder="City" style="color: #0000ff; width:100%; margin-left: 6px;" ng-model="vm.FormCity" required></div>
+              </div>
+              <div class="row">
+                  <div class="prospect-edit90"><input type="text" placeholder="Country" style="color: #0000ff; width:100%; margin-left: 6px;" ng-model="vm.FormCountry" required></div>
+              </div>
+             
+
+                <div class="row">
+                  <div class="col"><div class="today-followupbtn" ng-click="disableEditor()">Cancel</div></div>
+                  <div class="col"><div class="today-followupbtn" ng-click="updateLead()">Save</div></div>
+                </div>
+              </div>
+              </div>
+             <!-- </div> -->
+            
+          </ion-item>
+          </div>
+          </div>
+
+          <div ng-controller="CollapsablePanel1">
+          <ion-list>
+          <div ng-repeat="group in groups">
+          <ion-item class="item-stable item-icon-right" style="color:#fff"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            Source of Enquiry Details
+          </ion-item>
+         <ion-item  ng-show="isGroupShown(group)" style="background:color:#fff">
+           <div id="prospectview"  class="col-bg-white" >
+           <div ng-hide="editorEnabled">
+           <div class="prospect-edit-icon"><i class="icon-google-edit icon-pros" ng-click= "enableEditor()" aria-hidden="true"></i> </div>
+           <div class="row" style="padding:0" >
+              <div class="col">
+                  <div  style=" width:100%; font-size:10pt; padding:5px 0 0 0">First Connect Name</div>
+               </div>
+              <div class="col">
+                  <div style="margin-left: 6px;width:100%; font-size:10pt; padding:5px 0 0 0">First Connect Details</div>
+               </div>
+           </div>
+            <div class="row"  style="padding:0; ">
+              <div class="col">
+                  <div  style=" width:100%; font-size:10pt; padding:5px 0 0 0">Primary Source</div>
+               </div>
+              <div class="col">
+                  <div  style=" width:100%; font-size:10pt; padding:5px 0 0 0;padding-left: 5px;">Secondary Source</div>
+               </div>
+           </div>
+           <div style="border:solid 2px #666666"></div>
+             <div class="row" style="padding:0">
+              <div class="col">
+                  <div>
+                    <div  style=" width:100%; font-size:10pt; padding:5px 0 0 0">Sales Engine Name</div>
+                  </div>
+               </div>
+               <div class="col">
+                   <div style=" width:100%; font-size:10pt; padding:5px 0 0 0; padding-left: 5px;">City</div>
+              </div>
+           </div>
+            <div class="row" style="padding:0">
+              <div class="col">
+                  <div >
+                       <div style=" width:100%; font-size:10pt; padding:5px 0 0 0;">Preferred Location</div>
+                  </div>
+               </div>
+           </div>
+           </div>
+           <div ng-show="editorEnabled" ng-controller="MyCtrl1">                    
+              <div class="row" style="padding:0">
+             <div class="col">
+                <select style=" width:100%; font-size:10pt; margin-top: 6px;color:blue;" class="select" style="text-trasform:uppercase" ng-model="FirstConnect" ng-options="s.PickListItemName for s in FirstConnectList" ng-change="GetFirstConnectModeLists(FirstConnect)" value="{{item}}"  required selected>{{PickListItemName}}
+                  <option disabled value="">First Connect</option></select></div>            
+             <div class="col">
+                  <select style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select"  ng-model="firstconnectmode" ng-options="x.Description for x in FirstConnectModeValue" ng-change="getFirstConnectMode(firstconnectmode)" value="{{item}}"  required selected>{{s.Description}}
+                  <option disabled value="">First Connect Details</option></select></div>
+             </div>
+
+    <div class="row"  style="padding:0; ">
+              <div class="col">             
+                  <select style=" width:100%; font-size:10pt;color:blue;text-trasform:uppercase;" class="select" ng-model="primarysource" ng-options="a.PickListItemName for a in primarysourceList" ng-change="SecondarySourceLists(primarysource)" value="{{item}}"  required selected>{{a.PickListItemName}}
+                  <option disabled value="">Primary Source</option>
+                  </select>
+               </div>
+            <div class="col">
+             <label class="">
+              <select class="select" style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select"  ng-model="secondarysource" ng-options="a.PickListItemName for a in SecondarySourceList"  value="{{item}}"  required selected>
+              <option disabled value="">Secondary Source</option>
+              </select>
+             </label>
+           </div>
+    </div>
+
+     <div class="row" style="padding:0">
+          <div class="col" >
+               <select style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select" ng-model="SalesEngine" ng-options="x.PickListItemName for x in SalesEngineList" ng-change="getSalesCtrl()" value="{{item}}"  required selected>{{PickListItemName}}
+                  <option  disabled value="">Sales Engine</option>
+              </select>   
+         </div>
+          <div class="col">             
+             <select style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select"  ng-model="citychoice" ng-options="s.PickListItemName for s in CityChoiceList" ng-change="PrefferedLocationList(citychoice);" value="{{item}}"  required selected>{{PickListItemName}}
+                <option disabled value="">City</option>
+             </select>
+         </div>
+     </div>
+
+     <div class="row"  style="padding:0; ">
+              <div class="col">
+             <label class="">
+              <select class="select" style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select"  ng-model="location" ng-options="a.PickListItemName for a in PrefferedLocationList"  value="{{item}}"  required selected ng-change="GetOriginValues(location);">
+              <option disabled value="">Preffered Location</option>
+              </select>
+             </label>
+           </div>
+            
+    </div>
+         <div style="border:solid 2px #666666"></div>
+             <div class="row">
+                <div class="col"><div class="today-followupbtn" ng-click="disableEditor()">Cancel</div></div>
+             <div class="col"><div class="today-followupbtn" ng-click="SaveSourceOfenquiry()">Save</div></div>
+             </div>
+            </div>
+          </div>
+         </ion-item>
+        </div>
+        </ion-list>
+       </div>
+
+         <div ng-controller="CollapsablePanel1">
+          <ion-list>
+          <div ng-repeat="group in groups">
+          <ion-item class="item-stable item-icon-right" style="color:#fff" ng-click="toggleGroup(group)"ng-class="{active: isGroupShown(group)}">
+              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+           Check Lists
+          </ion-item>
+          
+         <ion-item  ng-show="isGroupShown(group)" style="background-color: #fff"> 
+            <a href="#/app/check-list-details" style="text-decoration: none !important">
+            <div class="prospect-edit-icon" style="right:50px;top:0px;"><i class="icon-google-edit icon-pros" aria-hidden="true"></i> </div>
+            </a>
+            <div class="prospect-edit-icon" style="    top: -4px;">
+              <div style="    color: rgb(255, 255, 255);background-color: #f8981d;font-size: 8pt;margin: 0;padding: 3px;border: none;    height: 21px;"><b>Submit</b></div>
+            </div>
+           <p style="white-space: normal; margin-top:10px">Why did you choose to explore a Total Environment home?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+
+           <p style="white-space: normal; margin-top:10px">What type of a home do you want?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+
+           <p style="white-space: normal; margin-top:10px">Would this be for end use or investment purpose?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+
+           <p style="white-space: normal; margin-top:10px">Are you looking for a fully furnished or unfurnished home?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+
+           <p style="white-space: normal; margin-top:10px">What amenities are you looking for in the project?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+
+           <p style="white-space: normal; margin-top:10px">What kind of facilities do you want close to the project?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+
+           <p style="white-space: normal; margin-top:10px">What is your timeframe to make this purchase?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+
+           <p style="white-space: normal; margin-top:10px">Which other projects are you exploring?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+
+           <p style="white-space: normal; margin-top:10px">What is your budget?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+
+           <p style="white-space: normal; margin-top:10px">How are you going to fund this purchase?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+
+           <p style="white-space: normal; margin-top:10px">What experiences, good and bad, have you had with other builders? What do you
+want that should be different this time around?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+
+           <p style="white-space: normal; margin-top:10px">How do you prefer to be contacted?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+
+           <p style="white-space: normal; margin-top:10px">When can we see the project site?</p>
+           <p style="white-space: normal; padding-left: 10px; color:#0000ff!important; ">Ans</p>
+           </ion-item>
+          </div>
+        </ion-list>
+       </div> 
+        
+      
+       <div ng-controller="CollapsablePanel1">
+          <ion-list>
+          <div ng-repeat="group in groups">
+          <ion-item class="item-stable item-icon-right" style="color:#fff" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            Notes
+         </ion-item>
+         <ion-item  ng-show="isGroupShown(group)">
+           <div id="prospectview"  class="col-bg-white" >
+              <div><textarea class="textarea" placeholder="Add Notes..." data-notes ng-model="notes" name="notes" required></textarea></div>
+              <div class="btnsml" ng-click="addNotes(notes);">submit</div>
+              <ul>
+              <li ng-repeat="x in TENotesViewModels">
+              <div class="note-bg">
+                <div class="fleft"><i class="icon-google-phone" aria-hidden="true"></i> {{names.Mobile}}</div>
+                <div class="fright" style="margin:0 5px">{{x.CreatedOn}}</div>
+                <div class="clear"></div>
+                <div style="padding:5px 0; border-bottom:dotted 1px #ccc">{{x.Notes}} </div>
+                <div class="fright" style="margin:0 5px">Srikanth Akula</div>
+                <div class="clear"></div>
+              </div>
+              </li>
+              </ul>
+          </div>
+          </ion-item>
+        </div>
+          </div>
+      </ion-list>
+        </div>
+     <div ng-controller="CollapsablePanel1">
+          <ion-list>
+          <div ng-repeat="group in groups">
+          <ion-item class="item-stable item-icon-right" style="color:#fff"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            Follow Up
+          </ion-item>
+         <ion-item  ng-show="isGroupShown(group)">         
+           <div class="col-bg-white" >
+           <div class="prospect-edit50"><input  type="text"  placeholder="Follow Up Title" style="margin-left: 14px;height: 30px;border: solid 1px #ccc;padding: 2px;border-radius: 3px;padding-top: 4px;" data-notes ng-model="title" name="titte" required></div>
+           <div class="prospect-edit50" style="margin-left: 14px;height: 30px;border: solid 1px #ccc;padding: 2px;border-radius: 3px;margin: 2px 0;padding-top:0px;width: 172px;">
+           <select class="select"   ng-model="SelectedItem" ng-change="getValuefromfollowupCtrl(SelectedItem)" 
+                 data-ng-options="blisterPackTemplate as blisterPackTemplate.name for blisterPackTemplate in blisterPackTemplates">
+                 <option value="">Follow Up Type</option></select>
+            </div>
+           <div style="clear:both;"></div>
+           <div class="prospect-edit50" >
+            <div ><input class="select" style="margin-left: 14px;height: 30px;border: solid 1px #ccc;padding: 2px;border-radius: 3px;padding-top:0px;" name="dateInput" type="date" data-date ng-model="datevalue" ng-change="getSelectedDate()"  required></div>
+           </div>
+            <div class="prospect-edit50" ><input  type="text"  placeholder="Duration" style="height: 30px;border: solid 1px #ccc;padding: 2px;border-radius: 3px;margin: 2px 0;padding-top: 0px;width: 186px;width: 172px;" data-notes ng-model="duration" name="duration" required></div>
+          <label class="item item-input">
+           <textarea placeholder="Add Something" style="color:#808080;border:solid 2px #f1f1f1;width: 343px;margin-left: 6px;margin-top: -7px;" data-notes ng-model="data" name="data" required></textarea>
+          </label>
+          <div class="row">
+          <div class="col" style="padding: 0;margin: 0;"><div class="today-followupbtn" ng-click="cancelFollowUp()">Cancel</div></div>
+          <div class="col" style="padding: 0;margin: 0;"><div class="today-followupbtn" ng-click="addfollowUp(title, datetime, duration, data)" >Submit</div></div>
+         </div>
+         </div>
+        
+         <div class="card" ng-repeat="s in TETaskViewModels">
+            <a class="item item-avatar" href="#" style="background-color: #F5F5F5;">
+              <i class="icon ion-ios-telephone"></i>
+              <div class="col"><h2 style="margin-left:16px;margin-top: -22px;">{{s.TaskType}}</h2></div>
+              <p style="padding:5px 0; border-bottom:dotted 1px #616161;">{{s.Notes}}</p>
+              <div class="row">
+              <div class="col" style="margin-left: -13px;"><p>Created On: {{createdOnNotesFinal}}</p></div>
+              <div class= "col"><p style="margin-left: 30px;">By: {{s.CreatedBy_Name}}</p></div>
+             </div>
+             </a>
+           </div> 
+         </ion-item> 
+        </div>       
+      </ion-list>
+    </div>
+
+   
+
+
+        <div ng-controller="CollapsablePanel1">
+          <ion-list>
+          <div ng-repeat="group in groups" >
+          <ion-item class="item-stable item-icon-right" style="color:#fff"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            Offers
+          </ion-item>
+         <ion-item  ng-show="isGroupShown(group)">
+          <div style="width:100%;overflow-y:scroll;" >
+          <table class="table table-bordered" id="Table3" >
+              <tbody><tr style="background-color:#BDBDBD; font-size:8pt; color:white;">
+                  <th>Order ID</th>
+                  <th>Project</th>
+                  <th>Unit</th>
+                  <th>Value</th>
+                  <th>Status</th>
+                  <th>Expire Date</th>
+
+
+              </tr>
+              <tr style="font-size:10pt;"><tr  class="row1">
+
+                  <td style="font-size:8pt;"> <a href="#/app/offer-approval-details-withoutapprove/4287" style="text-decoration: none !important" class="ng-binding"><a href="#/app/offer-list">4287</a></a> </td>
+                  <td style="font-size:8pt;" class="ng-binding">LiTG</td>
+                  <td style="font-size:8pt;" class="ng-binding">10052</td>
+                  <td style="font-size:8pt;" class="ng-binding">0.31</td>
+                  <td style="font-size:8pt;" class="ng-binding">TS Signed</td>
+                  <td style="font-size:8pt;" class="ng-binding">31-Aug-17</td>
+
+             </tr>
+             <tr  class="row1">
+                  <td style="font-size:8pt;"> <a href="#/app/offer-approval-details-withoutapprove/4289" style="text-decoration: none !important" class="ng-binding">4289</a> </td>
+                  <td style="font-size:8pt;" class="ng-binding">ATR</td>
+                  <td style="font-size:8pt;" class="ng-binding">1055</td>
+                  <td style="font-size:8pt;" class="ng-binding">0.55</td>
+                  <td style="font-size:8pt;" class="ng-binding">TS Signed</td>
+                  <td style="font-size:8pt;" class="ng-binding">31-Aug-17</td>
+             </tr>              
+          </tbody>
+
+                                  </table>
+                     </div>
+                </ion-item>
+             </div>
+         </ion-list>
+      </div>
+  </ion-content>
+</ion-view>

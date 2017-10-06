@@ -1,0 +1,174 @@
+<ion-view view-title="Reimbursement" side="Center" class="animate-in-primary bg"  ng-controller="ReimbursementController as vm">
+  <ion-content>
+  <ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+  <style>
+    </style>
+    <div class="panel-head">Claim Book</div>    
+    <div class="collapse-view">
+      <div class="row" style="padding: 0px;">
+          <div class="col collapse-text-head">{{vm.ClaimBookSelected.Employeename}}</div>
+      </div>
+    </div>
+    <div class="collapse-view collapse-temp-new">
+      <div style="background-color:#ffde00; font-size:9pt;color:#000; padding:0 5px">Pending for Approval</div>
+      <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim No</div>
+                <div class="col col-50">{{vm.ClaimBookSelected.UniqueId}}</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Type:</div>
+                <div class="col col-50">{{vm.ClaimBookSelected.ClaimType.Name}}</div>          
+            </div>
+          </div>      
+      </div>
+      <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Amount:</div>
+                <div class="col col-50">{{vm.ClaimBookSelected.TotalClaimAmount}}</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Claim Date:</div>
+                <div class="col col-50">{{vm.ClaimBookSelected.ClaimDate  | date : "dd-MMM-yy" }}</div>          
+            </div>
+          </div>      
+      </div>
+      <!-- <div class="row ion-pad-none">
+        <div class="col col-20 text-small">Project:</div>
+        <div class="col text-small">Songs From the Wood</div>       
+      </div> -->
+     <!--  <div class="row ion-pad-none">
+        <div class="col col-20 text-small">Description:</div>
+        <div class="col text-small">{{vm.ClaimBookSelected.Remarks}}</div>       
+      </div> -->
+        <div class="row ion-pad-none">
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Description:</div>
+                <div class="col col-50">{{vm.ClaimBookSelected.Remarks}}</div>          
+            </div>
+          </div> 
+          <div class="col col-50 ion-pad-none">
+            <div class="row ion-pad-none">
+                <div class="col col-50 text-small">Fund Center:</div>
+                <div class="col col-50">{{vm.ClaimBookSelected.FundCenter.FundCenterCode}} - {{vm.ClaimBookSelected.FundCenter.FundCenterDescription}}</div>          
+            </div>
+          </div>      
+      </div>
+
+          
+  </div>
+
+  <div style="width:100%;overflow-y:scroll;">
+    <div>
+      <table class="table table-bordered" id="Table1" style="width:520px;">
+        <tr style="background-color:#ffbe8f; font-size:8pt; color:#000;">
+            <th style="width:100px;">Category</th>
+            <th style="width:80px;">Amount (RS)</th>
+            <th style="width:75px;">Date</th>
+            <th style="width:130px;">Justification</th>
+            <th style="width:65px;">Attachments</th>
+            <th style="width:70px;">Paid By</th>
+        </tr>
+        <tr ui-sref="app.Reimbursement-create({claimbookid:vm.ClaimBookSelected.UniqueId,claimitemid:claimItem.UniqueId})" style="font-size:8pt; background-color:#fff;" ng-repeat="claimItem in vm.ClaimBookSelected.ClaimItem">
+
+            <td style="text-decoration:none;cursor:pointer;">{{claimItem.ClaimCategory.Name}}</td>
+            <td style="text-align:right;cursor:pointer;">{{claimItem.AmountInINR}}</td>
+            <td style="cursor:pointer;">{{claimItem.FromDate  | date : "dd-MMM-yy" }}</td>
+            <td style="cursor:pointer;">{{claimItem.Justification}}</td>
+            <th style="text-align: center;cursor:pointer;"><i class="icon ion-image"></i></th>
+            <td>Employee</td>
+        </tr>
+       <!--  <tr style="font-size:8pt; background-color:#fff;">
+            <td><a href="#/app/Reimbursement-view-item" style="text-decoration:none;">Food</a></td>
+              <td style="text-align:right">200</td>
+            <td>20-Jun-16</td>
+            <td>Late Stay</td>
+            <th style="text-align: center;"><i class="icon ion-image"></i></th>
+            <td>Employee</td>
+        </tr> -->
+      </table>
+    </div>
+  </div>
+  <div class="collapse-view" style="margin-top:-0px !important">    
+      <div class="row" style="padding: 0px;">
+          <div class="col text-small light-brdr-dot-grey">PaidBy Employee</div>
+          <div class="col text-small light-brdr-dot-grey">Advance Outstanding</div>
+          <div class="col text-small light-brdr-dot-grey">Net Due To Employee</div>
+          <!-- <div class="col text-small light-brdr-dot-grey" style="    background-color: #ffbe8f;">Total</div> -->
+      </div>
+      <div class="row" style="padding: 0px; margin-top:0">
+          <div class="col text-small light-brdr-dot-grey ion-txt-rit">{{vm.ClaimBookSelected.TotalAmtPaidByEmployee}}</div>
+          <div class="col text-small light-brdr-dot-grey ion-txt-rit" >{{vm.AdvancedOutstanding=0}}</div>
+          <div class="col text-small light-brdr-dot-grey ion-txt-rit">{{vm.ClaimBookSelected.TotalAmtPaidByEmployee - vm.AdvancedOutstanding}}</div>
+      </div>
+    </div>
+
+
+
+<div class="panel-head">Notes</div>
+<div class="row" style="margin-top:10px;">
+     <!--  <div class="col" style="padding: 10px;"><i class="icon ion-person-stalker" style="font-size:20pt; color:#808080"></i> -->
+        <!--<label class="item item-input item-select">
+        <div class="input-label text-small">
+          Send To
+        </div>
+        <select>
+          <option>Anil Baradia</option>
+          <option selected>Sreejith Janardan</option>
+          <option>Manjunath Ramesh</option>
+        </select>
+      </label>-->
+      <!-- </div> -->
+    <div style="width:75%; float:left;"><textarea class="textarea" ng-model="vm.ClaimBookLogSelected.Remarks" style="height: 40px;" placeholder="Remarks..." data-notes ng-model="notes" name="notes" required></textarea></div>
+    <div class="col"><i class="icon ion-android-send" style="font-size: 26pt;color: #ff8400;" ng-click=vm.saveClaimBookLog();></i></div>
+  </div>
+<div ng-repeat="claimbooklog in vm.ClaimBookLogCollection">
+  <div class="collapse-view">
+    <div class="row" style="padding: 0px;">
+      <div style="width:15%;">
+        <div class="pr-cr pr-cr-bg-org">{{claimbooklog.EmployeeName}}</div>
+      </div>
+      <div style="width:85%; line-height:2.0">{{claimbooklog.Remarks}}</div>
+     </div>
+  </div>
+  </div>
+  <!-- <div class="collapse-view">
+    <div class="row" style="padding: 0px;">
+      <div style="width:15%;">
+        <div class="pr-cr pr-cr-bg-blu">MR</div>
+      </div>
+      <div style="width:85%; line-height:2.0">I have updated the bill</div>
+     </div>
+  </div>
+  <div class="collapse-view">
+    <div class="row" style="padding: 0px;">
+      <div style="width:15%;">
+        <div class="pr-cr pr-cr-bg-gr">AB</div>
+      </div>
+      <div style="width:85%; line-height:2.0">Bill not visible properly</div>
+     </div>
+  </div> -->
+  <div style="border:solid 2px #666666"></div>
+      <div class="row" ng-show="vm.ClaimBookSelected.Status=='Draft'">
+      <div ui-sref="app.Reimbursement({user:'Employee'})" class="col"><div class="cancelbtn" >Cancel</div></div>
+      <div class="col"><div class="today-followupbtn" ng-click="vm.saveClaimBook('Submitted for Approval',vm.ClaimBookSelected);">Submit
+      </div></div>
+  </div>
+</ion-tabs>
+</ion-content>
+<!-- <a ui-sref="app.Reimbursement-add-item({id:vm.ClaimBookSelected.UniqueId})"  style="text-decoration:none;">
+ <div class="add-icon"><i class="icon ion-plus-circled" style="font-size: 34pt;color: #f8981d;"></i></div></a> -->
+<div ng-show="vm.ClaimBookSelected.Status=='Draft'">
+ <a ui-sref="app.Reimbursement-create({claimbookid:vm.ClaimBookSelected.UniqueId})" style="text-decoration:none;">
+ <div class="add-icon"><i class="icon ion-plus-circled" style="font-size: 34pt;color: #f8981d;"></i></div></a>
+</div>
+</ion-view>
+<!-- ng-click="vm.AddClaimItem();" -->
+ 

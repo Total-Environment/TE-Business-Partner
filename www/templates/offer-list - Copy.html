@@ -1,0 +1,91 @@
+<ion-view view-title="Offer" side="Center" class="animate-in-secondary bg" ng-controller="OfferApprovalList">
+<ion-content>
+<ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+
+<div class="list list-inset" style="border-radius: 5px;border: solid 1px #e3e2e2;margin:10px 5px">
+  <label class="item item-input" style="padding: 2px 5px !important;">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="text" placeholder="Search" style="border-radius: 3px">
+  </label>
+</div>
+<div style="border-radius: 5px; margin-bottom: 5px;   border: solid 1px rgb(248, 152, 29);"></div>
+  <ion-list>
+    <div ng-controller="CollapsablePanel1">
+      <div ng-repeat="group in groups">
+        <div ng-controller="CollapsablePanel1">
+          <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#4d281b;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              <span style="font-size:10pt;">Songs from the Wood</span>
+              <span class="badge1 badge-assertive">0</span>
+          </ion-item>
+          <ion-item  ng-show="isGroupShown(group)">
+
+            <a href="#/app/offer-approval-details" style="text-decoration: none !important">
+              <div class="collapse-view collapse-temp-general im-card" style="    margin-top: -5px !important;">
+                <div class="row" style="padding: 0px;">
+                  <div class="col col-75 collapse-text-head Saleste_ellipsis_text">Ms Shantha  Rangaswamy</div>           
+                  <div class="col table-cells" style="color:#1da1f8; text-align: right">3123</span> </div>
+                </div>
+                <div class="row" style="padding: 0px;">
+                  <div class="col collapse-text-small">S.by: Fugue admin</div>
+                  <div class="col collapse-text-small">SC: Sai Kumar Singapati</div>
+                  <div class="col collapse-text-small" style="text-align:right;   font-weight: bold;">9,99,99,000</div>
+                </div>
+              </div>
+            </a>
+            <div class="collapse-view collapse-temp-general im-card">
+              <div class="row" style="padding: 0px;">
+                <div class="col col-75 collapse-text-head Saleste_ellipsis_text">Mr Gajanan Murthy</div>           
+                <div class="col table-cells" style="color:#1da1f8; text-align: right">4123</span> </div>
+              </div>
+              <div class="row" style="padding: 0px;">
+                <div class="col collapse-text-small">S.by: Fugue admin</div>
+                <div class="col collapse-text-small">SC: Sai Kumar Singapati</div>
+                <div class="col collapse-text-small" style="text-align:right;   font-weight: bold;">9,99,99,000</div>
+              </div>
+            </div>
+          </ion-item>
+        </div>
+      </div>
+
+      <div ng-repeat="group in groups">
+        <div ng-controller="CollapsablePanel1">
+          <ion-item class="item-stable item-icon-right" style="color:#fff;background-color:#00b0c9;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              <span style="font-size:10pt;">Windmills of Your Mind</span>
+              <span class="badge1 badge-assertive">0</span>
+          </ion-item>
+          <ion-item  ng-show="isGroupShown(group)">
+            
+            <div class="collapse-view collapse-temp-general im-card" style="    margin-top: -5px !important;">
+              <div class="row" style="padding: 0px;">
+                <div class="col col-75 collapse-text-head Saleste_ellipsis_text">Ms Shantha  Rangaswamy</div>           
+                <div class="col table-cells" style="color:#1da1f8; text-align: right">3123</span> </div>
+              </div>
+              <div class="row" style="padding: 0px;">
+                <div class="col collapse-text-small">S.by: Fugue admin</div>
+                <div class="col collapse-text-small">SC: Sai Kumar Singapati</div>
+                <div class="col collapse-text-small" style="text-align:right;   font-weight: bold;">9,99,99,000</div>
+              </div>
+            </div>
+
+            <div class="collapse-view collapse-temp-general im-card">
+              <div class="row" style="padding: 0px;">
+                <div class="col col-75 collapse-text-head Saleste_ellipsis_text">Mr Gajanan Murthy</div>           
+                <div class="col table-cells" style="color:#1da1f8; text-align: right">4123</span> </div>
+              </div>
+              <div class="row" style="padding: 0px;">
+                <div class="col collapse-text-small">S.by: Fugue admin</div>
+                <div class="col collapse-text-small">SC: Sai Kumar Singapati</div>
+                <div class="col collapse-text-small" style="text-align:right;   font-weight: bold;">9,99,99,000</div>
+              </div>
+            </div>
+          </ion-item>
+        </div>
+      </div>
+
+    </div>
+  </ion-list>
+  </ion-content>
+</ion-view>
+ 

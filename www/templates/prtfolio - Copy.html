@@ -1,0 +1,280 @@
+<ion-view view-title="Portfolio">
+<ion-content class="page" ng-controller="PortfolioUnitValueArea">
+<ul>
+   <li ng-repeat="x in value">
+  <div class="main-pan">
+  <div class="portfolio-img" >
+  <div class="port-img-bdr"><a  ng-click="NavigateToProjectDetails(x)"><img src="{{projectlogoUrl}}{{x.Logo}}" width="81"></div>
+  </div>
+  <div class="portfolio-panr">
+    <div class="port-pan-bg">
+      <div class="port-pan1">Units</div>
+      <div class="port-pan2">Area</div>
+      <div class="port-pan3">Value</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">{{x.TotalUnits}}</div>
+      <div class="port-pan2">{{x.TotalArea | currencyDecimalFormat}}</div>
+      <div class="port-pan3">{{x.TotalValue | currencyDecimalFormat}}</div>
+      <div class="clear"></div>
+    </div>
+
+    
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">{{x.AvailableUnits}}</div>
+      <div class="port-pan2">{{x.AvailableArea | currencyDecimalFormat}}</div>
+      <div class="port-pan3">{{x.AvailableValue | currencyDecimalFormat}}</div>
+      <div class="clear"></div>
+    </div>
+
+    
+    <div class="port-pan-bg-gr">
+      <div class="port-pan1">{{x.BlockedUnits}}</div>
+      <div class="port-pan2">{{x.BlockedArea | currencyDecimalFormat}}</div>
+      <div class="port-pan3">{{x.BlockedValue | currencyDecimalFormat}}</div>
+      <div class="clear"></div>
+    </div>
+    
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">{{x.BookedUnits}}</div>
+      <div class="port-pan2">{{x.BookedArea | currencyDecimalFormat}}</div>
+      <div class="port-pan3">{{x.BookedValue | currencyDecimalFormat}}</div>
+      <div class="clear"></div>
+    </div>
+    
+    <div class="port-pan-bg-gr">
+      <div class="port-pan1">{{x.NotForSaleUnits}}</div>
+      <div class="port-pan2">{{x.NotForSaleArea | currencyDecimalFormat}}</div>
+      <div class="port-pan3">{{x.NotForSaleValue | currencyDecimalFormat}}</div>
+      <div class="clear"></div>
+    </div>
+    
+     <div class="port-pan-bg-no">
+      <div class="port-pan1">{{x.SoldUnits}}</div>
+      <div class="port-pan2">{{x.SoldArea | currencyDecimalFormat}}</div>
+      <div class="port-pan3">{{x.SoldValue | currencyDecimalFormat}}</div>
+      <div class="clear"></div>
+    </div></a>
+    
+    <!--<div class="port-pan-bg-gr">
+      <div class="port-pan1">{{x.SoldUnits}}</div>
+      <div class="port-pan2">{{x.SoldArea}}</div>
+      <div class="port-pan3">{{x.SoldValue}}</div>
+      <div class="clear"></div>
+    </div>-->
+
+    <!--<div class="port-pan-bg-no">
+      <div class="port-pan1">{{x.TotalUnits}}</div>
+      <div class="port-pan2">{{x.TotalArea}}</div>
+      <div class="port-pan3">{{x.TotalValue}}</div>
+      <div class="clear"></div>
+    </div>-->
+  </div>
+
+  <div class="clear"></div>
+  </div>
+   </li>
+</ul>
+
+
+  <!--<div class="main-pan">
+  <div class="portfolio-img">
+    <div class="port-img-bdr"><img src="img/After-the-Rain.jpg" width="81"></div>
+    </div>
+  <div class="portfolio-panr">
+    <div class="port-pan-bg">
+      <div class="port-pan1">Unit</div>
+      <div class="port-pan2">Area</div>
+      <div class="port-pan2">Value</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">392</div>
+      <div class="port-pan2">17,08,066</div>
+      <div class="port-pan3">1237.10</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-gr">
+      <div class="port-pan1">342</div>
+      <div class="port-pan2">14,42,076</div>
+      <div class="port-pan3">907.57</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">342</div>
+      <div class="port-pan2">14,42,076</div>
+      <div class="port-pan3">907.57</div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  </div>
+  <div class="main-pan">
+  <div class="portfolio-img">
+    <div class="port-img-bdr"><img src="img/Learning-to-Fly.jpg" width="81"></div>
+    </div>
+  <div class="portfolio-panr">
+    <div class="port-pan-bg">
+      <div class="port-pan1">Unit</div>
+      <div class="port-pan2">Area</div>
+      <div class="port-pan2">Value</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">392</div>
+      <div class="port-pan2">17,08,066</div>
+      <div class="port-pan3">1237.10</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-gr">
+      <div class="port-pan1">342</div>
+      <div class="port-pan2">14,42,076</div>
+      <div class="port-pan3">907.57</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">342</div>
+      <div class="port-pan2">14,42,076</div>
+      <div class="port-pan3">907.57</div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  </div>
+  <div class="main-pan">
+  <div class="portfolio-img">
+    <div class="port-img-bdr"><img src="img/Lost-in-the-Greens.jpg" width="81"></div>
+    </div>
+  <div class="portfolio-panr">
+    <div class="port-pan-bg">
+      <div class="port-pan1">Unit</div>
+      <div class="port-pan2">Area</div>
+      <div class="port-pan2">Value</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">392</div>
+      <div class="port-pan2">17,08,066</div>
+      <div class="port-pan3">1237.10</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-gr">
+      <div class="port-pan1">342</div>
+      <div class="port-pan2">14,42,076</div>
+      <div class="port-pan3">907.57</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">342</div>
+      <div class="port-pan2">14,42,076</div>
+      <div class="port-pan3">907.57</div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  </div>
+  <div class="main-pan">
+  <div class="portfolio-img">
+    <div class="port-img-bdr"><img src="img/Pursuit-of-a-Radical-Rhapsody.jpg" width="81"></div>
+    </div>
+  <div class="portfolio-panr">
+    <div class="port-pan-bg">
+      <div class="port-pan1">Unit</div>
+      <div class="port-pan2">Area</div>
+      <div class="port-pan2">Value</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">392</div>
+      <div class="port-pan2">17,08,066</div>
+      <div class="port-pan3">1237.10</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-gr">
+      <div class="port-pan1">342</div>
+      <div class="port-pan2">14,42,076</div>
+      <div class="port-pan3">907.57</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">342</div>
+      <div class="port-pan2">14,42,076</div>
+      <div class="port-pan3">907.57</div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  </div>
+  <div class="main-pan">
+  <div class="portfolio-img">
+    <div class="port-img-bdr"><img src="img/Songs-from-the-Wood.jpg" width="81"></div>
+    </div>
+  <div class="portfolio-panr">
+    <div class="port-pan-bg">
+      <div class="port-pan1">Unit</div>
+      <div class="port-pan2">Area</div>
+      <div class="port-pan2">Value</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">392</div>
+      <div class="port-pan2">17,08,066</div>
+      <div class="port-pan3">1237.10</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-gr">
+      <div class="port-pan1">342</div>
+      <div class="port-pan2">14,42,076</div>
+      <div class="port-pan3">907.57</div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="port-pan-bg-no">
+      <div class="port-pan1">342</div>
+      <div class="port-pan2">14,42,076</div>
+      <div class="port-pan3">907.57</div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  </div>-->
+
+<!--<div class="sub-head martb5">Projects</div>
+ <div ng-controller="PortfolioCtrl">
+    <ul>
+    <li ng-repeat="x in items">
+    <div class="card">
+    <a class="item item-thumbnail-left" href="#">
+      <img src="img/download.jpg">
+      <h2 align="right">{{x.ProjectName}}</h2>
+      <p align="right">{{x.CompanyName}}</p>
+      <p align="right">{{x.Location}}</p>
+      <p align="right">{{x.ProjectShortName}}</p>
+    </a>
+    </div>
+    <li>
+    <ul>
+</div>-->
+  </ion-content>
+</ion-view>

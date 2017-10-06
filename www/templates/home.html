@@ -1,0 +1,46 @@
+<ion-view class="pullCenter" title="Business Partner" align-title="center" ng-controller="HomeController">
+  <ion-content >
+    <div ng-controller="SlideCtrl">
+    <ion-slide-box  pager-click="navSlide(index)" auto-play="true" does-continue="true">
+         <ion-slide><img style="width: 100%" src="img/image1.jpg"> </ion-slide>
+        <ion-slide><img style="width: 100%" src="img/image2.jpg"></ion-slide>
+        <ion-slide><img style="width: 100%" src="img/image3.jpg"></ion-slide>
+        <ion-slide><img style="width: 100%" src="img/image4.jpg"></ion-slide>
+     </ion-slide-box>
+     </div>
+
+  </ion-content>
+     <div style="position:fixed; top:60px; left:15px;" id="homeIc" ng-controller="AlertCtrl">
+            <a href="#/app/create_prospect">
+                <div style="padding:10px 0" class="SalesClass"><img src="img/Home_icons/prospect-white.png"/>
+                </div>
+            </a>
+            <a href="#/app/lead">
+                <div style="padding:10px 0" class="SalesClass"><img src="img/Home_icons/lead-white.png"/>
+                </div>
+            </a>
+            <!-- <a href="#/app/pipeline">
+                <div style="padding:10px 0" class="SalesClass"><img src="img/Home_icons/pipeline.png"/>
+                </div>
+            </a> -->
+            <a href="#/app/prtfolio">
+                <div style="padding:10px 0" class="Po"><img src="img/Home_icons/portfolio-white.png"/>
+                    <span id="pendingCount" class="badge"></span>
+                </div>
+            </a>
+            <a href="#/app/calendar">
+                <div style="padding:10px 0" class="Po"><img src="img/Home_icons/calendar.png"/>
+                    <span id="pendingCount" class="badge"></span>
+                </div>
+            </a>
+            <a href="#/app/sample-offer">
+                <div style="padding:10px 0" class="SalesClass"><img src="img/Home_icons/sample-offer.png" /></div>
+            </a>
+           
+            <a href="#/app/helpdesk">
+                <div style="padding:10px 0" class="SalesClass"><img src="img/Home_icons/contact.png"/>
+                </div>
+            </a> 
+            
+        </div>
+</ion-view>

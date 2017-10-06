@@ -1,0 +1,97 @@
+<ion-side-menus >
+  <ion-side-menu-content drag-content="false">
+
+    <ion-nav-bar class="bar-energized orange">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+
+       <ion-nav-buttons side="right">
+       <a href="#/app/notification_panel" style="text-decoration: none;color:#333"> <i  class="button button-icon button-clear ion-ios-bell" style="margin-top: 6px;" menu-toggle="right"></i> </a>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" width="myWidthValue + 250">
+    <ion-header-bar class="bar-energized orange">
+      <h1 class="title">Profile</h1>
+    </ion-header-bar>
+    <ion-content class="custom">
+     <div class="hero slide-up element" style="background-image: url('img/test/prf-bg.jpg');" >
+            <div class="content prfimgtxt" style="opacity:0">
+                <div class="avatar" ng-click="takePhoto();" style="background-image: url('img/test/profile-img.png');"></div>
+                <h4><a class="light"><font color:white;>Anil Baradia</font></a></h4>
+                <h6 style="margin-bottom:10px;">anil.baradia@total-environment.com</h6>
+            </div>
+        </div>
+
+     <ion-list class="custom">
+        <a href="#/app/home" style="text-decoration:none;">
+          <li menu-close  class="item ion-home" style="margin-top: 13px; margin-bottom: -15px;">
+              <font color="white" style="padding-left: 8px;">Home</font>
+          </li>
+         </a>
+
+        <a href="#/app/create_prospect" style="text-decoration:none;">
+          <li menu-close  class="item menu-txt" style="    margin-bottom: -15px;">
+            <img src="img/Home_icons/prospect-white.png" width="25"/>
+            <span style="color: white;position: absolute;top: 8px;">Cteate Prospect</font>
+          </li>
+         </a>
+
+         <a href="#/app/lead" style="text-decoration:none;">
+          <li menu-close  class="item menu-txt" style="    margin-bottom: -15px;">
+            <img src="img/Home_icons/lead-white.png" width="25"/>
+            <span style="color: white;position: absolute;top: 8px;">Leads</font>
+          </li>
+         </a>
+
+        
+         <a href="#/app/prtfolio" style="text-decoration:none;">
+          <li menu-close  class="item menu-txt" style="    margin-bottom: -15px;">
+            <img src="img/Home_icons/portfolio-white.png" width="25"/>
+            <span style="color: white;position: absolute;top: 8px;">Portfolio</font>
+          </li>
+         </a>
+
+         <a href="#/app/calendar" style="text-decoration:none;">
+          <li menu-close  class="item menu-txt" style="    margin-bottom: -15px;">
+            <img src="img/Home_icons/calendar.png" width="25"/>
+            <span style="color: white;position: absolute;top: 8px;">Calendar</font>
+          </li>
+         </a>
+
+         <a href="#/app/sample-offer" style="text-decoration:none;">
+          <li menu-close  class="item menu-txt" style="    margin-bottom: -15px;">
+            <img src="img/Home_icons/sample-offer.png" width="25"/>
+            <span style="color: white;position: absolute;top: 8px;">Sample Offer</font>
+          </li>
+         </a>
+
+         <a href="#/app/helpdesk" style="text-decoration:none;">
+          <li menu-close  class="item menu-txt" style="    margin-bottom: -15px;">
+            <img src="img/Home_icons/contact.png" width="25"/>
+            <span style="color: white;position: absolute;top: 8px;">Helpdesk</font>
+          </li>
+         </a>
+
+
+
+        <a href="#/app/profile" style="text-decoration:none;"> <li menu-close class="item ion-university" style="margin-top: 19px; margin-bottom: -15px;">
+         <font color="white" style="padding-left: 8px;">Profile</font></li></a>
+
+        <a href="#/app/" style="text-decoration:none;"><li menu-close ng-click="login()" style="margin-left: 0px;margin-top: 20px;" class="item ion-log-out">
+         <font color="white" style="padding-left: 8px;">Logout </font></li></a>
+
+        <div style="border:solid 1px #EF6C00;margin-top:100px;"></div>
+
+        <div class="row"><div><img src="img/login-logo.png" style="height:28px;margin-top: 0px;"></div><div class="version">Beta - 1.0</div><div class="clear"></div></div>
+     </ion-list >
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

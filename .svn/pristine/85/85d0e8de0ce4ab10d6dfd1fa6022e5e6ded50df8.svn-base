@@ -1,0 +1,169 @@
+// Ionic Starter App
+
+// angular.module is a global place for creating, registering and retrieving Angular modules
+// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+// 'starter.controllers' is found in controllers.js
+angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
+
+.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    if (window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      cordova.plugins.Keyboard.disableScroll(true);
+
+    }
+    if (window.StatusBar) {
+      // org.apache.cordova.statusbar required
+      StatusBar.styleDefault();
+    }
+  });
+})
+
+.config(function($stateProvider, $urlRouterProvider,$provide) {
+ $provide.decorator('$state', function($delegate, $stateParams) {
+        $delegate.forceReload = function() {
+            return $delegate.go($delegate.current, $stateParams, {
+                reload: true,
+                inherit: false,
+                notify: true
+            });
+        };
+        return $delegate;
+  })
+
+  $stateProvider
+
+    .state('app', {
+    url: '/app',
+    abstract: true,
+    templateUrl: 'templates/menu.html',
+    controller: 'AppCtrl'
+  })
+
+  .state('app.home', {
+    url: '/home',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/home.html',
+        controller: 'HomeController'
+      }
+    }
+  })
+/*Reimbursement States*/
+
+/*List of Claims for employee*/
+   .state('app.Reimbursement', {
+    url: '/Reimbursement/:user?',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/Reimbursement/Employee/Reimbursement.html',
+        //controller : 'ReimbursementController as vm'
+      }
+    }
+  })
+/*Claim book detail view*/
+   .state('app.Reimbursement-view', {
+    url: '/Reimbursement-view/:claimbookid?',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/Reimbursement/Employee/Reimbursement-view.html'
+      }
+    }
+  })
+/*Claim Book and Item creation view*/
+   .state('app.Reimbursement-create', {
+    url: '/Reimbursement-create/:claimbookid?,claimitemid?',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/Reimbursement/Employee/Reimbursement-create.html'
+      }
+    }
+  })
+  /*Not in use*/
+  // .state('app.Reimbursement-add-item', {
+  //   url: '/Reimbursement-add-item/:id?',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/Reimbursement/Employee/Reimbursement-add-item.html'
+  //     }
+  //   }
+  // })
+/*Claim item detail view*/
+  .state('app.Reimbursement-view-item', {
+    url: '/Reimbursement-view-item/:claimitemid?',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/Reimbursement/Employee/Reimbursement-view-item.html'
+      }
+    }
+  })
+  /*List of claims for manager approval*/
+  .state('app.Reimbursement-manager', {
+    url: '/Reimbursement-manager/:user?',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/Reimbursement/Manager/Reimbursement-manager.html',
+        //controller:"ReimbursementController as vm"
+      }
+    }
+  })
+    /*Claim book detail for manager approval*/
+  .state('app.Reimbursement-manager-view', {
+    url: '/Reimbursement-manager-view/:claimbookid?',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/Reimbursement/Manager/Reimbursement-manager-view.html'
+      }
+    }
+  })
+  /*Not in use*/
+  // .state('app.Reimbursement-manager-view-item', {
+  //   url: '/Reimbursement-manager-view-item',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/Reimbursement/Manager/Reimbursement-manager-view-item.html'
+  //     }
+  //   }
+  // })
+/*List of Claims finance approval*/
+  .state('app.Reimbursement-Finance', {
+    url: '/Reimbursement-Finance/:user?',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/Reimbursement/Finance/Reimbursement-Finance.html'
+      }
+    }
+  })
+  /*Claim book detail for finance approval*/
+  .state('app.Reimbursement-Finance-view', {
+    url: '/Reimbursement-Finance-view/:claimbookid?',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/Reimbursement/Finance/Reimbursement-Finance-view.html'
+      }
+    }
+  })
+  /*Not in use*/
+  // .state('app.Reimbursement-Finance-view-item', {
+  //   url: '/Reimbursement-Finance-view-item',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/Reimbursement/Finance/Reimbursement-Finance-view-item.html'
+  //     }
+  //   }
+  // })
+  /*Reimbursement landing view*/
+  .state('app.reimbus-all', {
+    url: '/reimbus-all',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/Reimbursement/reimbus-all.html'
+      }
+    }
+  })
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/app/home');
+});

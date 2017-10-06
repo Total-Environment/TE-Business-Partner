@@ -1,0 +1,61 @@
+<ion-view view-title="Pipeline" side="Center" class="animate-in-primary bg">
+<ion-content >
+<ion-refresher on-refresh="doRefresh()" ></ion-refresher>
+    <div class="row" style="background-color:#a6a6a6; padding:3px; margin:5px 0;color:#fff"> 
+        <div class="col">All</div>
+        <div class="col"><span class="nhwc new " style="margin: 6px 0 0 5px;"></span></div>
+        <div class="col"><span class="nhwc cold" style="margin: 6px 0 0 5px;"></span></div>
+        <div class="col"><span class="nhwc hot" style="margin: 6px 0 0 5px;"></span></div>
+        <div class="col">1|2512</div>
+        <div class="col">2|2211</div>
+        <div class="col">3|2233</div>
+        <div class="col">4|2233</div>
+        <div class="col">5|2233</div>
+    </div>
+        <div style="width:100%;overflow-y:scroll; margin:5px;">
+            <table class="table table-bordered" id="Table3" style="width:350px;">
+                <tr style="background-color:#17202A; font-size:8pt; color:white;">
+                    <th style="width:120px;">Name</th>
+                    <th style="width:35px;">Temp</th>
+                    <th style="width:35px;">Stg</th>
+                    <th style="width:35px;">ESV</th>
+                    <th style="width:35px;">EEV</th>
+                    <th style="width:35px;">Age</th>
+                    <th style="width:35px;">Idle</th>
+                </tr>
+                <tr style="font-size:10pt;">
+                    <td><span class="name_text">Mr Channabasappa</span></td>
+                    <td><span class="nhwc cold" ></span></td>
+                    <td class="txt-right">2</td>
+                    <td class="txt-right">25.00</td>
+                    <td class="txt-right">84.00</td>
+                    <td class="txt-right">3</td>
+                    <td class="txt-right">2</td>
+                </tr>
+                <tr style="font-size:10pt;">
+                    <td><span class="name_text">Mr Manjunath</span></td>
+                    <td><span class="nhwc new" ></span></td>
+                    <td class="txt-right">2</td>
+                    <td class="txt-right">25.00</td>
+                    <td class="txt-right">84.00</td>
+                    <td class="txt-right">3</td>
+                    <td class="txt-right">2</td>
+                </tr>
+                <tr style="font-size:10pt;">
+                    <td><span class="name_text">Mr Deepak</span></td>
+                    <td><span class="nhwc hot" ></span></td>
+                    <td class="txt-right">2</td>
+                    <td class="txt-right">25.00</td>
+                    <td class="txt-right">84.00</td>
+                    <td class="txt-right">3</td>
+                    <td class="txt-right">2</td>
+                </tr>
+            </table>
+        </div>
+
+
+         
+    </ion-list>
+  </ion-content>
+</ion-view>
+ 

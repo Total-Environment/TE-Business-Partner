@@ -1,0 +1,215 @@
+<ion-view view-title="Closed">
+  <ion-content class="page" ng-controller="PortfolioUnitValueArea">
+
+    <div class="main-pan">
+      <div class="portfolio-img">
+        <div class="port-img-bdr"><img src="img/After-the-Rain.jpg" width="81"></div>
+      </div>
+      <div class="portfolio-panr">
+        <div class="port-pan-bg">
+          <div class="port-pan1">Unit</div>
+          <div class="port-pan2">Area</div>
+          <div class="port-pan2">Value</div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="port-pan-bg-no">
+          <div class="port-pan1">392</div>
+          <div class="port-pan2">17,08,066</div>
+          <div class="port-pan3">1237.10</div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="port-pan-bg-gr">
+          <div class="port-pan1">342</div>
+          <div class="port-pan2">14,42,076</div>
+          <div class="port-pan3">907.57</div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="port-pan-bg-no">
+          <div class="port-pan1">342</div>
+          <div class="port-pan2">14,42,076</div>
+          <div class="port-pan3">907.57</div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    
+    <div ng-controller="CollapsablePanel1">
+      <ion-list>
+        <div ng-repeat="group in groups">
+            <ion-item class="item-stable item-icon-right" style="color:#fff" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              2011 - 12
+              <span class="badge1 badge-assertive" style="padding-right:160px;font-size: 10pt;">26</span>
+              <span class="badge1 badge-assertive" style="padding-right: 80px;font-size: 10pt;">90,560</span>
+              <span class="badge1 badge-assertive" style="font-size: 10pt;">78.26</span>  
+            </ion-item>
+            
+            <ion-item  ng-show="isGroupShown(group)">
+              <div style="width: 106%;overflow-y: scroll;margin: -13px 0px 5px -13px;">
+                <div>
+                  <ion-scroll direction="x" class="wide-as-needed">
+                    <div class="row">
+                      <a href="" style="text-decoration:none;" >
+                        <div class="offer-scoll-date scroll-year active-colr active-colr">All</div>
+                      <a>
+                      <a href="" style="text-decoration:none;" >
+                        <div class="offer-scoll-date">Apr <br> 2017</div>
+                      <a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">May <br> 2017</div>
+                      <a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Jun <br> 2017</div>
+                      <a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Jul <br> 2017</div>
+                      <a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Aug <br> 2017</div>
+                      <a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Sep <br> 2017</div>
+                      </a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Oct <br> 2017</div>
+                      </a>
+                      <a href="" style="text-decoration:none;">
+                      <div class="offer-scoll-date">Nov <br> 2017</div>
+                      </a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Dec <br> 2017</div>
+                      </a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Jan <br> 2018</div>
+                      </a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Feb <br> 2018</div>
+                      </a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Mar <br> 2018</div>
+                      </a>
+                    </div>
+                  </ion-scroll>
+                  
+                </div>
+              </div>  
+               
+              <a href="#/app/sale-closure-sale-details" style="text-decoration: none">
+              <div class="collapse-view collapse-temp-new im-card-new" style="width:102%; padding:0 !important; margin-top: 0px !important;">
+                  <div class="row" style="padding: 8px 0;">
+                    <div class="col col-50 Saleste_ellipsis_text collapse-text-head">Srikant Akula</div>           
+                    <div class="col table-cells" style="text-align: right;">13-Mar2013</span> </div>
+                    <div class="col table-cells" style="text-align: right;">Unit: 0016</span> </div>
+                  </div>
+              </div>
+              </a>
+            </ion-item>
+        </div>
+        
+      </ion-list>
+    </div>
+
+    <div ng-controller="CollapsablePanel1">
+      <ion-list>
+        <div ng-repeat="group in groups">
+            <ion-item class="item-stable item-icon-right" style="color:#fff" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+              2012 - 13
+              <span class="badge1 badge-assertive" style="padding-right:160px;font-size: 10pt;">26</span>
+              <span class="badge1 badge-assertive" style="padding-right: 80px;font-size: 10pt;">90,560</span>
+              <span class="badge1 badge-assertive" style="font-size: 10pt;">78.26</span>  
+            </ion-item>
+            
+            <ion-item  ng-show="isGroupShown(group)">
+              <div style="width: 106%;overflow-y: scroll;margin: -13px 0px 5px -13px;">
+                <div>
+                  <ion-scroll direction="x" class="wide-as-needed">
+                    <div class="row">
+                      <a href="" style="text-decoration:none;" >
+                        <div class="offer-scoll-date scroll-year active-colr active-colr">All</div>
+                      <a>
+                      <a href="" style="text-decoration:none;" >
+                        <div class="offer-scoll-date">Apr <br> 2017</div>
+                      <a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">May <br> 2017</div>
+                      <a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Jun <br> 2017</div>
+                      <a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Jul <br> 2017</div>
+                      <a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Aug <br> 2017</div>
+                      <a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Sep <br> 2017</div>
+                      </a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Oct <br> 2017</div>
+                      </a>
+                      <a href="" style="text-decoration:none;">
+                      <div class="offer-scoll-date">Nov <br> 2017</div>
+                      </a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Dec <br> 2017</div>
+                      </a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Jan <br> 2018</div>
+                      </a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Feb <br> 2018</div>
+                      </a>
+                      <a href="" style="text-decoration:none;">
+                        <div class="offer-scoll-date">Mar <br> 2018</div>
+                      </a>
+                    </div>
+                  </ion-scroll>
+                  
+                </div>
+              </div>  
+              
+                <div class="collapse-view collapse-temp-new im-card-new" style="width:102%; padding:0 !important; margin-top: 0px !important;">
+                  <div class="row" style="padding: 8px 0;">
+                    <div class="col col-50 Saleste_ellipsis_text collapse-text-head">R Chandrashekaran</div>           
+                    <div class="col table-cells" style="text-align: right;">28-Mar2013</span> </div>
+                    <div class="col table-cells" style="text-align: right;">Unit: 0116</span> </div>
+                  </div>
+              </div>
+
+              <div class="collapse-view collapse-temp-new im-card-new" style="width:102%; padding:0 !important; margin-top: 0px !important;">
+                  <div class="row" style="padding: 8px 0;">
+                    <div class="col col-50 Saleste_ellipsis_text collapse-text-head">Ashok Krishnan and Sheshadri</div>           
+                    <div class="col table-cells" style="text-align: right;">22-Mar2013</span> </div>
+                    <div class="col table-cells" style="text-align: right;">Unit: 0093</span> </div>
+                  </div>
+              </div>
+
+              <div class="collapse-view collapse-temp-new im-card-new" style="width:102%; padding:0 !important; margin-top: 0px !important;">
+                  <div class="row" style="padding: 8px 0;">
+                    <div class="col col-50 Saleste_ellipsis_text collapse-text-head">Shivaramkrishnan Ganapathi</div>           
+                    <div class="col table-cells" style="text-align: right;">13-Mar2013</span> </div>
+                    <div class="col table-cells" style="text-align: right;">Unit: 0016</span> </div>
+                  </div>
+              </div>
+
+              <div class="collapse-view collapse-temp-new im-card-new" style="width:102%; padding:0 !important; margin-top: 0px !important;">
+                  <div class="row" style="padding: 8px 0;">
+                    <div class="col col-50 Saleste_ellipsis_text collapse-text-head">Kalyan Mohan and Radha Mohan</div>           
+                    <div class="col table-cells" style="text-align: right;">205-Mar2013</span> </div>
+                    <div class="col table-cells" style="text-align: right;">Unit: 0108</span> </div>
+                  </div>
+              </div>
+              
+            </ion-item>
+        </div>
+        
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-view>
