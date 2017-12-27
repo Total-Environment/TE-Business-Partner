@@ -61,20 +61,7 @@
                   <option disabled value="">First Connect Details</option></select></div>
              </div>
 
-    <div class="row"  style="padding:0; ">
-              <div class="col">             
-                  <select style=" width:100%; font-size:10pt;color:blue;text-trasform:uppercase;" class="select" ng-model="primarysource" ng-options="a.PickListItemName for a in primarysourceList" ng-change="SecondarySourceLists(primarysource)" value="{{item}}"  required selected>{{a.PickListItemName}}
-                  <option disabled value="">Primary Source</option>
-                  </select>
-               </div>
-            <div class="col">
-             <label class="">
-              <select class="select" style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select"  ng-model="secondarysource" ng-options="a.PickListItemName for a in SecondarySourceList"  value="{{item}}"  required selected>
-              <option disabled value="">Secondary Source</option>
-              </select>
-             </label>
-           </div>
-    </div>
+
 
      <div class="row" style="padding:0">
           <div class="col" >
@@ -123,20 +110,20 @@
      <div class="row" style="padding:0">
        
           
-        <select style="width:100%; font-size:10pt; margin-top: 6px;margin-left:10px;color:blue;text-trasform:uppercase"  class="select"  ng-model="pselitems"   ng-options="s.ProjectName for s in projectList"  value="{{item}}"  required multiple>
+        <select style="width:100%; font-size:10pt; margin-top: 6px;margin-left:10px;color:blue;text-trasform:uppercase"  class="select"  ng-model="pselitems"   ng-options="s.ProjectName for s in projectList"  value="{{item.ProjectID}}"  multiple>
             <option disabled value=""  selected>Interested Projects</option>
            
             </select>
        
         
      </div> 
-     <div style="margin-left:10px;" ng-repeat="prj in pselitems">{{prj.ProjectName}}</div>
+    <!-- <div style="margin-left:10px;" ng-repeat="prj in pselitems">{{prj.ProjectName}}</div> -->
     
     <div style="border:solid 2px #666666"></div>
     <div class="row" style="padding:0">
        
         <div class="col">                 
-            <select style=" width:100%; font-size:10pt; margin-top: 6px;text-trasform:uppercase;color:blue;" class="select"  ng-model="pselitem" ng-options="s.ProjectName for s in pselitems" ng-change="GetAllProductList(pselitem);" value="{{item}}"  selected required>{{s.ProjectName}}
+            <select style=" width:100%; font-size:10pt; margin-top: 6px;text-trasform:uppercase;"   ng-model="pselitem" ng-options="s.ProjectName for s in pselitems" ng-change="GetAllProductList(pselitem);" value="{{item}}"  selected required>{{s.ProjectName}}
             <option disabled value="">Select Project</option></select>
         </div>
      </div> 
@@ -144,12 +131,12 @@
     <div class="row" style="padding:0">
           <div class="col">
                 <div>
-                  <select style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select" ng-model="Productselitem" ng-options="s.ProductName for s in SubProduct" ng-change="getProductDetails()" value="{{item}}"  selected required> {{s.ProductName}}
+                  <select style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" ng-model="Productselitem" ng-options="s.ProductName for s in SubProduct" ng-change="getProductDetails()" value="{{item}}"  selected required> {{s.ProductName}}
                   <option disabled value="">Product</option></select>
                </div>
          </div>
          <div class="col" > 
-             <select style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;" class="select"  ng-model="Specification" ng-options="s.SpecificationName for s in Specifications" ng-change="getSpecificationDetails()" value="{{item}}"  selected required>{{s.SpecificationName}}
+             <select style=" width:100%; font-size:10pt;text-trasform:uppercase;color:blue;"  ng-model="Specification" ng-options="s.SpecificationName for s in Specifications" ng-change="getSpecificationDetails()" value="{{item}}"  selected required>{{s.SpecificationName}}
              <option disabled value="">Specification</option> </select>
          </div>
      </div>

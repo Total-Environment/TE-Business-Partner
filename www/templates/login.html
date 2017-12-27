@@ -1,22 +1,32 @@
-<ion-modal-view >
-  <ion-header-bar style="background-color:#e67e22">
-    <h1 class="title">OTP</h1>
+<ion-modal-view ng-controller="loginController" title="Oauth Login">
+  <!-- <ion-header-bar style="background-color:#e67e22">
+    <h1 class="title">Fugue</h1>
     <div class="buttons">
       <button class="button button-clear" ng-click="closeLogin()"></button>
     </div>
-  </ion-header-bar>
-  <ion-content ng-controller="MpinCtrl">
+  </ion-header-bar> -->
+ <ion-view hide-nav-bar="true">
+  <ion-content class="backgroundImage">
     <form ng-submit="doLogin()">
-       
-      <div class="list" style="width: 93%;margin:100px auto;">
-        <label class="item item-input">
-          <input type="text" style="border-bottom: solid 1px #ccc;padding: 10px 0;height: 40px;" placeholder="Please Enter the OTP, Receive from the Prospect" ng-model="loginData.username">
+       <img style="width: 50%; margin:0px auto;display:block;margin-top: 114px;" src="img/login-logo.png">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label" style="color:white;margin-top:37px;">Email Id</span>
+          <input type="text" style="color:white;" placeholder="Email Id" ng-model="loginData.email">
         </label>
+		 <label class="item item-input item-floating-label">
+          <input type="text" style="color:white;" placeholder="Password" ng-model="loginData.Password">
+        </label>
+		<!-- <label class="item item-input item-floating-label">
+          <span class="input-label" style="color:white;">Password</span>
+          <input type="password" style="color:white;" placeholder="Password" ng-model="loginData.password">
+        </label> -->
         <label class="item">
           <!-- <button class="button button-block button-positive" type="submit"></button> -->
-          <button class="button1 button button-full">Submit</button>
+          <button class="button1 button button-full" ng-click="Authenticatelogin()">Go to Home</button>
         </label>
       </div>
     </form>
   </ion-content>
+  </ion-view>
 </ion-modal-view>

@@ -1,4 +1,4 @@
-<ion-view view-title="Lead" side="Center" class="animate-in-primary bg">
+<ion-view view-title="Lead Details" side="Center" class="animate-in-primary bg">
     <style>
 .list {
     position: relative;
@@ -20,26 +20,39 @@
     background-color: #7cbd3b;
     color: #fff;
 }
+.title.title-left.header-item{
+	    left: 0px !important;
+}
         </style>
 <ion-content >
 <ion-refresher on-refresh="doRefresh()" ></ion-refresher>
 
-
 <ion-list show-delete="false" can-swipe="true" swipe-direction="both">
-    <ion-item href="#/app/particular_prospect_details/{{x.LeadID}}">
-            <div class="collapse-view im-card" style="width:98%;padding:0 !important;margin: 15px 0 -11px 0 !important;margin-left: 1% !important;background-color: #e4f9cf;">
+<!-- <ion-item href="#/app/particular_prospect_details/{{x.LeadID}}"> -->
+
+    <div ng-repeat = "data in BpLeadStagingDetails" >
+        <div class="collapse-view im-card" style="width:75%;margin: 40px 0 -38px 0 !important;margin-left: 16% !important;background-color: {{data.status=='OTP Verification Pending'?'#fffeb0':'' || data.status=='Active'?'#e4f9cf':'' || data.status=='Sold'?'#68b41c':''|| data.status=='In Activate'?'#ffdada':''|| data.status=='Draft'?'#fff':''}}" >
             <div class="row" style="padding: 0px 10px; font-size:10pt;" >
-                <div class="col col-50 collapse-text-head Saleste_ellipsis_text" style="padding-top: 5px;" >Anil Baradia</div>  
-                <div class="col">WoYM</div>
-                <div class="col" style="text-align: right;">Activated</div>
+                <div class="item  collapse-text-head Saleste_ellipsis_text" style="padding-top: 5px;" ><span style="margin-right: 10px;">{{data.FirstName }}</span><span>{{ data.LastName}}</span></div>  
+                <div class="col " style="padding-top: 10px;">	|</div>
+				<div class="item  collapse-text-head Saleste_ellipsis_text" style="padding-top: 5px;" ><span style="margin-right: 10px;"><a href="tel:{{data.Mobile}}" style="text-decoration:none;">{{data.Mobile}}</a></span></div>  
+                
             </div>
-            <div class="row" style="padding: 0px 10px; font-size:10pt;" >
+			<div class="row" style="padding: 0px 10px; font-size:10pt;" >
+			<div class="col ">{{data.PreferredProjectFullName}}</div>
+			</div>
+			<div class="row" style="padding: 0px 10px; font-size:10pt;" >
+				
+				<div ng-if="data.status != 'OTP Verification Pending'" class="col " style="text-align:{{data.status == 'OTP Verification Pending'?'':'right'}}">{{data.status == 'Active'?'Active':'' || data.status == 'OTP Verification Pending'?'Pending':'' || data.status == 'In Activate'?'In Activate':'' || data.status == 'Sold'?'Sold':'' || data.status == 'Draft'?'Draft':'' || data.status == 'OTP Verification Done'?'Duplicate':'' || data.status == 'TS Generated'?'TS Generated':'' || data.status == 'TS Signed'?'TS Signed':''|| data.status == 'Offered'?'Offered':'' || data.status == 'Transitioned'?'Transitioned':'' || data.status == 'Cancelled'?'Cancelled':''}}</div>
+				<button ng-if="data.status == 'OTP Verification Pending'" ng-click="resendOtp(data)" class="col " ion-button style="border-radius: 4px;height: 1.8em;line-height: 1;font-size: 0.9rem; color: #fff;background-color: #387ef5;">Validate OTP</button>
+			</div>
+       <!--     <div class="row" style="padding: 0px 10px; font-size:10pt;" >
                 <div class="col col-50" style="padding-top: 5px;" >Manjunath</div>  
                 <div class="col" style="text-align: right;">15-07-17</div>
-            </div>
+            </div> -->
         </div>
-    </ion-item>
-
+    </div>
+<!--
     <ion-item>
         <div class="collapse-view im-card" style="width:98%;padding:0 !important;margin: 3px 0 -11px 0 !important;margin-left: 1% !important;background-color: #fffeb0;">
             <div class="row" style="padding: 0px 10px;font-size:10pt;" >
@@ -84,7 +97,7 @@
                     <div class="col" style="text-align: right;">15-07-17</div>
                 </div>
             </div>          
-            <ion-option-button side="left" class="button-assertive icon"style="background-color: #f8981d;" >Upload Invoice</ion-option-button>
+            <ion-option-button side="left" class="button-assertive icon"style="background-color: #f8981d;" >Upload</ion-option-button>
             
         </ion-item>
 
@@ -102,7 +115,7 @@
                 </div>          
                 <ion-option-button side="left" class="button-assertive icon" ng-click="modal.show()">Activate</ion-option-button>
             </ion-item>
-       
+       -->
     </ion-list>
 
 

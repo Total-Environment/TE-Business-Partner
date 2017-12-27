@@ -1,6 +1,6 @@
 angular.module('starter', ['ionic', 'starter.controllers','starter.services','ionic-datepicker','ngCordova','angular.filter'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -11,6 +11,10 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','io
       StatusBar.styleDefault();
     }
   });
+  
+   $rootScope.$on('$viewContentLoaded', function() {
+      $templateCache.removeAll();
+   });
 })
 
 .config(function($stateProvider, $urlRouterProvider, $provide) {
@@ -33,7 +37,15 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','io
     controller: 'AppCtrl'
   })
 
- 
+ .state('app.login', {
+    url: '/login',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/login.html',
+        controller: 'loginController'
+      }
+    }
+  })
 .state('app.home', {
     url: '/home',
     views: {
@@ -58,7 +70,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','io
     views: {
       'menuContent': {
         templateUrl: 'templates/particular_prospect_details.html',
-        controller: 'GetParticularLeadData as vm'
+      
         
       }
     }
@@ -720,7 +732,8 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','io
     url: '/calendar',     
     views: {
       'menuContent': {
-        templateUrl: 'templates/calendar.html'
+        templateUrl: 'templates/calendar.html',
+		controller: 'calendarController'
       }
     }
   })
@@ -822,16 +835,8 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','io
       }
     }
   })
-  .state('app.track-ticket-details-resolved', {
-    url: '/track-ticket-details-resolved',     
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/track-ticket-details-resolved.html'
-      }
-    }
-  })
   
   
 // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/app/login');
 });

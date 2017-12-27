@@ -1,3 +1,4 @@
+var connectionIp = "10.18.18.22";
 angular.module('starter.services', ['ngCookies'])
 
 .factory('Auth', function($cookieStore) {
@@ -10,14 +11,14 @@ angular.module('starter.services', ['ngCookies'])
         }  
         var url = {
            
-            PortfolioUrl: 'http://192.168.51.248/portfolio/',
-            ContactAPIUrl:'http://192.168.51.248/TEContactManagementAPI/',
-            LeadApi:'http://192.168.51.251/lead/',
-            TEEmailApi: 'http://192.168.51.251/TEEmailAPI/',
-            FugueLangingPage: 'http://192.168.51.248/fuguelanding/index.html',
-            TESAPPurchaseService: 'http://182.72.251.226/sappurchaseservice/podocuments/',
-            TELeadManagementAPI:'http://192.168.51.251/TELeadManagementAPI/',
-            ProjectLogoUrlUrl:'http://192.168.51.251/portfolio/'
+            PortfolioUrl: 'http://'+connectionIp+'/portfolio/',
+            ContactAPIUrl:'http://'+connectionIp+'/TEContactManagementAPI/',
+            LeadApi:'http://'+connectionIp+'/lead/',
+            TEEmailApi: 'http://'+connectionIp+'/TEEmailAPI/',
+            FugueLangingPage: 'http://'+connectionIp+'/fuguelanding/index.html',
+            TESAPPurchaseService: 'http://'+connectionIp+'/sappurchaseservice/podocuments/',
+            TELeadManagementAPI:'http://'+connectionIp+'/TELeadManagementAPI/',
+            ProjectLogoUrlUrl:'http://'+connectionIp+'/portfolio_ProductionTest/'
            
         };
          function getUrl(host) {

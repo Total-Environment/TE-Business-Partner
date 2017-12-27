@@ -259,8 +259,8 @@ select[multiple] option[value=""][disabled] {
 .note-bg1{width: 100%;background-color: #fff;border: solid 1px #ccc;border-radius: 3px;padding: 5px;font-size: 10pt;color: #000;margin: 5px 0}
 .note-bg2{width: 100%;background-color: #d8eefd;border: solid 1px #ccc;border-radius: 3px;padding: 5px;font-size: 10pt;color: #000;margin: 5px 0}
 .page{padding:10px 5px}
-.portfolio-img{width:28%; float:left;}
-.port-img-bdr{border:solid 1px #ccc;padding:1px;height:85px;width: 85px;}
+.portfolio-img{float:left;}
+.port-img-bdr{border:solid 1px #e8e6e6;padding:1px;height:121px;width: 121px;}
 .portfolio-panr{width:72%; float:right; margin-top: 1px;}
 .actualvstarget-panr{width:100%; float:left; margin-top: 1px;}
 .port-pan-bg{background-color:#eeeeee;padding: 0px 2px; border-bottom:solid 1px #ddd;font-size: 9pt;}
@@ -1139,8 +1139,26 @@ table {
 }
 
 
+img[src=""] {
+   display: none;
+}
 
+option{
+	border-radius: 5px;
+    background: #f8f9fb;
+    height: 25px;
+    line-height: 8px;
+    position: relative;
+    padding: 4px;
+	    margin: 2px;
+	
+    color: black;
+}
+.default-title, .previous-title {
+    display: none !important;
+}
 
-
-
+.popup-container .popup {
+	width: 294px;
+}
 /* Helpdesk */

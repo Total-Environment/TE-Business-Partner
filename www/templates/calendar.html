@@ -2,55 +2,47 @@
   <ion-content >
     <ion-refresher on-refresh="doRefresh()" ></ion-refresher>
     <div class="row padding0" style="background-color:#a62a2a; padding:3px; margin:5px 0;color:#fff">
-      <div class="col txt-right" style="line-height: 1.6"> Jun 2017</div>
+      <div class="col txt-right" style="line-height: 1.6"> {{today}}</div>
       <div class="col txt-right"> Today</div>
     </div>
     <ion-item>
-    <div style="width:100%;overflow-y:scroll;">
+    <div style="width:100%;overflow-y:scroll;margin-bottom: 30px;">
                 <div>
                   <ion-scroll direction="x" class="wide-as-needed">
                     <div class="row">
-                      <a href="" style="text-decoration:none;" >
+                <!--      <a href="" style="text-decoration:none;" >
                         <div class="scoll-date-calendar active-colr active-colr">10</div>
-                      <a>
-                      <a href="" style="text-decoration:none;" >
-                        <div class="scoll-date-calendar">11 </div>
-                      <a>
-                        <a href="" style="text-decoration:none;">
-                        <div class="scoll-date-calendar">12</div>
-                      <a>
-                        <a href="" style="text-decoration:none;">
-                        <div class="scoll-date-calendar">13</div>
-                      <a>
-                        <a href="" style="text-decoration:none;">
-                        <div class="scoll-date-calendar">14</div>
-                      <a>
-                        <a href="" style="text-decoration:none;">
-                        <div class="scoll-date-calendar">15</div>
-                      <a>
-                        <a href="" style="text-decoration:none;">
-                        <div class="scoll-date-calendar">16</div>
-                        </a>
-                        <a href="" style="text-decoration:none;">
-                        <div class="scoll-date-calendar">17</div>
-                        </a>
+                      <a> -->
+                      
+                        <div id="{{key+1}}" class="scoll-date-calendar {{key+1 == currentDay?'active-colr active-colr':''}}" ng-repeat="(key, val) in days" ng-click="loadCalandarData(val, $event,days[key+1])">{{key+1}} </div>
+                      
+                      
                     </div>
                   </ion-scroll>
                   
                 </div>
               </div>  
-            <a href="#/app/appointment-details" style="text-decoration: none !important">
-              <div class="collapse-view collapse-temp-general im-card" style="margin-top: 5px !important;">
+     <!--       <a href="#/app/appointment-details" style="text-decoration: none !important"> -->
+			 <div class="collapse-view collapse-temp-general im-card" style="margin-top: 5px !important;" ng-if="calendarData.length ==0">
                 <div class="row" style="padding: 0px;">
-                  <div class="" style="width:21px;"><img src="img/ph-green.png"/></div>
-                  <div class="col col-60 padding0 collapse-text-head Saleste_ellipsis_text">Ms Shantha  Rangaswamy</div>    
-                  <div class="col collapse-text-small padding0 txt-left">9:30 AM</div>       
-                  <div style="width:21px;"><img src="img/ph-grey.png"/></div>
-                  <div style="width:21px;"><img src="img/mail-grey.png"/></div>
+              <!--    <div class="" style="width:21px;"><img src="img/ph-green.png"/></div> -->
+                  <div class="col col-60 padding0 collapse-text-head Saleste_ellipsis_text text-center">No Calendar Events</div>    
+                
+             <!--     <div style="width:21px;"><img src="img/ph-grey.png"/></div>
+                  <div style="width:21px;"><img src="img/mail-grey.png"/></div> -->
+                </div>
+              </div>	
+              <div class="collapse-view collapse-temp-general im-card" style="margin-top: 5px !important;" ng-repeat="data in calendarData">
+                <div class="row" style="padding: 0px;">
+              <!--    <div class="" style="width:21px;"><img src="img/ph-green.png"/></div> -->
+                  <div class="col col-60 padding0 collapse-text-head Saleste_ellipsis_text text-center">{{data.CustomerName}}</div>    
+                  <div class="col collapse-text-small padding0 txt-left">{{data.date | date:'M/d/yy h:mm a'}}</div>       
+             <!--     <div style="width:21px;"><img src="img/ph-grey.png"/></div>
+                  <div style="width:21px;"><img src="img/mail-grey.png"/></div> -->
                 </div>
               </div>
-            </a>
-
+       <!--     </a> -->
+<!--
             <div class="collapse-view collapse-temp-general im-card" style="margin-top: 5px !important;">
                 <div class="row" style="padding: 0px;">
                   <div class="" style="width:21px;"><img src="img/mail-green.png"/></div>
@@ -105,7 +97,7 @@
                   <div style="width:21px;"><img src="img/mail-grey.png"/></div>
                 </div>
               </div>
-
+-->
             
           </ion-item>
         </div>
@@ -116,6 +108,6 @@
       
     </ion-list>
   </ion-content>
-    <div class="ad-btn"><a href="#/app/appointment-details"><img src="img/ad.png" /></a></div>
+ <!--   <div class="ad-btn"><a href="#/app/appointment-details"><img src="img/ad.png" /></a></div> -->
 </ion-view>
  

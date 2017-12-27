@@ -1,4 +1,4 @@
-
+var connectionIp = "10.18.18.22";
 angular.module('starter.controllers')
 .service('dataService', function($scope, $http) {
 })
@@ -49,14 +49,14 @@ angular.module('starter.controllers')
     /*Development*/
       // var ReimbursementUrl='http://localhost:40496/';
 
-    /*Development-192.168.51.248*/
-      // var ReimbursementUrl='http://192.168.51.248/TEExpenseManagementAPI/';
-      // var TELeadManagemantApi='http://192.168.51.248/TELeadManagementAPI/';
+    /*Development-'+connectionIp+'*/
+      // var ReimbursementUrl='http://'+connectionIp+'/TEExpenseManagementAPI/';
+      // var TELeadManagemantApi='http://'+connectionIp+'/TELeadManagementAPI/';
 
-    /*UAT-192.168.51.251*/
-      var ReimbursementUrl='http://192.168.51.251/TEExpenseManagementAPI/';
-      var TELeadManagemantApi='http://192.168.51.251/TELeadManagementAPI/';
-      var TEHRISAPI = 'http://192.168.51.248/TEHRISAPI';
+    /*UAT-'+connectionIp+'*/
+      var ReimbursementUrl='http://'+connectionIp+'/TEExpenseManagementAPI/';
+      var TELeadManagemantApi='http://'+connectionIp+'/TELeadManagementAPI/';
+      var TEHRISAPI = 'http://'+connectionIp+'/TEHRISAPI';
 
 
     var urlItemMapper = 

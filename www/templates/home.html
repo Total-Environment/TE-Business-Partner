@@ -1,4 +1,15 @@
-<ion-view class="pullCenter" title="Business Partner" align-title="center" ng-controller="HomeController">
+<ion-view class="pullCenter" title="Business Partner" align-title="center" ng-controller="HomeController" hide-back-button = "true">
+<ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+		
+	<!--	<div class="col" align="center" ng-click="openPopover($event)" side="right">		
+			<div style="background-color: #fff; border-radius: 11px;  height: 24px; width: 25px;    margin-top: 4px;">
+				  <i class="icon "   style="font-size:9pt; color:rgb(248, 152, 29);position: relative; " ng-class=" 'ion-android-notifications-none'"></i>	  
+			</div>
+		</div>  -->
+
+      </ion-nav-buttons>
   <ion-content >
     <div ng-controller="SlideCtrl">
     <ion-slide-box  pager-click="navSlide(index)" auto-play="true" does-continue="true">

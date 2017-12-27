@@ -1,138 +1,36 @@
-<ion-view view-title="Project Details" side="Center" class="animate-in-primary">
-<ion-content class="page" ng-controller="GetParticularProjectID" >
+<ion-view view-title="Project Details" side="Center" class="animate-in-primary" ng-controller="GetParticularProjectID" >
+<ion-content class="page" >
   <ion-refresher on-refresh="doRefresh()" ></ion-refresher>
 
-<div ng-controller="CollapsablePanel1">
-         
-   <div ng-controller="CollapsablePanel1" ng-show="false">
-    <ion-list>
-        <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#fff"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-            Project Details
-          </ion-item>
-         <ion-item  ng-show="isGroupShown(group)">
-           <div class="row" style="padding:0">
-              <div class="col"><div style="width:100%; font-size:10pt; padding:5px 0 0 0">Project Name</div></div>
-              <div class="col"><div style="width:100%; font-size:10pt; padding:5px 0 0 0; background-color:{{ProjectColor}};color:#fff;text-align: center;">{{ProjectName}}</div></div>
-           </div>
-            <div style="border:solid 1px #424242"></div>
-            <div class="row" style="padding:0">
-              <div class="col"><div style=" width:100%; font-size:10pt; padding:5px 0 0 0">Project Code</div></div>
-              <div class="col"><div style=" width:100%; font-size:10pt; padding:5px 0 0 0;text-align: center;">{{ProjectCode}}</div></div>
-           </div>
-            <div style="border:solid 1px #424242"></div>
-            <div class="row" style="padding:0">
-              <div class="col"><div style=" width:100%; font-size:10pt; padding:5px 0 0 0">Company Name</div></div>
-              <div class="col"><div style=" width:75%; font-size:10pt; padding:5px 0 0 0;">{{CompanyName}}</div></div>
-           </div>
-            <div style="border:solid 1px #424242"></div>
-            <div class="row" style="padding:0">
-              <div class="col"><div style=" width:100%; font-size:10pt; padding:5px 0 0 0">Project Abbreviation</div></div>
-              <div class="col"><div style=" width:100%; font-size:10pt; padding:5px 0 0 0;text-align: center;">{{ProjectShortName}}</div></div>
-           </div>
-            <div style="border:solid 1px #424949  "></div>
-
-
-        <div ng-controller="CollapsablePanel1" style="margin-top:10px;">
-           
-          <ion-list>
-          
-          <div ng-repeat="group in groups">
-           <div ng-controller="CollapsablePanel1">
-          <ion-item class="item-stable item-icon-right" style="color:#000;background-color:#d3cfca;"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-         Signatory 
-          </ion-item>
-         <ion-item  ng-show="isGroupShown(group)">
-                  
-                   <div ng-controller="CollapsablePanel1">
-           
-          <ion-list>
-           <div ng-repeat="x in signatory">
-          <div ng-repeat="group in groups">
-           <div ng-controller="CollapsablePanel1">
-          <ion-item class="item-stable item-icon-right" style="color:#000;background-color:#d3cfca;"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon"  style="font-size:10pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-         <span style="font-size:10pt;">{{x.InformationItem}}</span>
-          </ion-item>
-         <ion-item  ng-show="isGroupShown(group)">
-       {{x.InformationDetails}}
-                 
-
-                 </ion-item>
-               </div>
-               </div>
-               </div>
-              </ion-list>
-             
-           </div>
-                 </ion-item>
-               </div>
-               </div>
-             
-              </ion-list>
-             
-           </div>
-
-
-             
-
-         </ion-item>
-        </div>
-      </ion-list>
-  </div>
- 
- <div ng-controller="CollapsablePanel1" >
-          <ion-list>
-          <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#fff"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-         Sales Plan & Target
-          </ion-item>
-         <ion-item  ng-show="isGroupShown(group)">
-       
-  
-    <div ng-controller="CollapsablePanel1">
+    <div ng-controller="CollapsablePanelActive" class="ctrlclass">
           <ion-list >
           <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#fff"
-                    ng-click="toggleGroup(group)"
+          <ion-item class="item-stable item-icon-right" style="color:#fff;"ng-click="toggleGroup(group)"
                     ng-class="{active: isGroupShown(group)}">
               <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
             Towers 
           </ion-item>
-         <ion-item  ng-show="isGroupShown(group)" >
-          	<div style="width:100%;overflow-y:scroll;">
-	              <table class="table table-bordered" id="Table3" style="width:570px;">
+         <ion-item  ng-show="isGroupShown(group)" style="padding: 0px 5px !important;">
+		 <div ng-if="TowerDetails.length==0" style="text-align:center;color:#f00">No Data Found</div>
+				 <div ng-if="TowerDetails.length>0" style="width:100%;overflow-y:scroll;">
+	              <table class="table table-bordered" id="Table3" style="margin-bottom: 5px">
                                     <tr style="background-color:#17202A; font-size:8pt; color:white;">
-                                        <th style="width:130px;">Tower Name</th>
-                                        <th style="width:55px;">Tower Short Name </th>
-                                         <th style="width:55px;">Block Name </th>
-                                        <th style="width:65px;">Launch Status</th>
+                                        <th style="width:130px;">TN</th>
+                                       
                                         <th style="width:65px;">Open For Sale</th>
-                                        <th style="width:155px;">Completion Percentage</th>
+                                        <th style="width:45px;">%</th>
                                         <th style="width:65px;">No of Units</th>
                                         <th style="width:105px;">Hand Over Date</th>
                                     </tr>
                                     <tr style="font-size:10pt;">
                                      <tr ng-repeat="tower in TowerDetails">
                                         <td style="font-size:8pt;">{{tower.TowerName}}</td>
-                                        <td style="font-size:8pt;">{{tower.TowerShortName}}</td>
-                                        <td style="font-size:8pt;">{{tower.BlockName}}</td>
-                                        <td style="font-size:8pt;">{{tower.LaunchStatus}}</td>
-                                        <td style="font-size:8pt;">{{tower.OpenForSale}}</td>
-                                        <td style="font-size:8pt;text-align:right;">{{tower.CompletionPercentage}}</td>
+                                                                      
+                                        <td style="font-size:8pt;" ng-if="tower.OpenForSale">YES</td>
+										 <td style="font-size:8pt;" ng-if="!tower.OpenForSale">NO</td>
+                                        <td style="font-size:8pt;text-align:right;">{{tower.CurrentCompletionPercentage}}</td>
                                         <td style="font-size:8pt;text-align:right;">{{tower.NoOfUnits}}</td>
-                                        <td style="font-size:8pt;">{{tower.CompletionDate | date:'dd-MMM-yyyy'}}</td>
+                                        <td style="font-size:8pt;">{{tower.ProgressEffectiveDate | date:'dd-MMM-yyyy'}}</td>
                                    </tr>
                              </tr>
                        </table>
@@ -142,7 +40,7 @@
       </ion-list>
     </div>
 
-     <div ng-controller="CollapsablePanel1">
+     <div ng-controller="CollapsablePanelActive" class="ctrlclass">
           <ion-list >
           <div ng-repeat="group in groups">
           <ion-item class="item-stable item-icon-right" style="color:#fff"
@@ -151,38 +49,30 @@
               <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
             Products 
           </ion-item>
-         <ion-item  ng-show="isGroupShown(group)" >
-          	<div style="width:100%;overflow-y:scroll;">
-	              <table class="table table-bordered" id="Table3" style="width:570px;">
+         <ion-item  ng-show="isGroupShown(group)" style="padding: 0px 5px !important;">
+		  <div ng-if="Productdetails.length==0" style="text-align:center;color:#f00">No Data Found</div>
+				 <div ng-if="Productdetails.length>0" style="width:100%;overflow-y:scroll;">
+	              <table class="table table-bordered" id="Table3" style="margin-bottom: 5px">
                                     <tr style="background-color:#17202A; font-size:8pt; color:white;">
                                         <th style="width:130px;">Products</th>
-                                       
-                                        <th style="width:55px;">Carpet Area</th>
-                                        <th style="width:65px;">Builtup Area</th>
-                                        <th style="width:155px;">Saleable Area</th>
-                                        <th style="width:65px;">Standard/Villa plot Area</th>
-
-                                         <th style="width:65px;">Super Builtup Area</th>
-                                          <th style="width:65px;">Area Multiplier</th>
-                                           <th style="width:130px;">UDI</th>
-                                        
-                                       
-                                        <!-- <th style="width:105px;">Saleable Price</th> -->
+                                      <!-- <th style="width:130px;">UDI</th>-->
+                                        <th style="width:55px;">CPA</th>
+                                        <th style="width:65px;">BUA</th>
+                     <th style="width:65px;">PLA</th>
+                      <th style="width:155px;">SLA</th>
+                      <th style="width:130px;">UDI</th>
+										 
                                     </tr>
                                     <tr style="font-size:10pt;">
-                                     <tr ng-repeat="c in Productdetails" ng-if="c.Status!='Pending For Approval'">
+                                     <tr ng-repeat="c in Productdetails" >
                                         <td style="font-size:8pt;">{{c.SubProductCode}}</td>
-                                       
+                                        <!--<td style="font-size:8pt;text-align:right;">{{c.UDI}}</td>-->
                                         <td style="font-size:8pt;text-align:right;">{{c.CarPetArea}}</td>
                                         <td style="font-size:8pt;text-align:right;">{{c.BuiltUpArea}}</td>
-                                        <td style="font-size:8pt;text-align:right;">{{c.SaleableArea}}</td>
-                                        <td style="font-size:8pt;text-align:right;">{{c.StandardPlotArea}}</td>
-                                        <td style="font-size:8pt;text-align:right;">{{c.SuperBuiltUpArea}}</td>
-                                        <td style="font-size:8pt;text-align:right;">{{c.BaseAreaMultiplier}}</td>
-                                         <td style="font-size:8pt;text-align:right;">{{c.UDI}}</td>
-                                        
-                                        
-                                       <!--  <td style="font-size:8pt;"></td> -->
+                    <td style="font-size:8pt;text-align:right;">{{c.StandardPlotArea}}</td>
+                    <td style="font-size:8pt;text-align:right;">{{c.SaleableArea}}</td>
+                    <td style="font-size:8pt;text-align:right;">{{c.UDI}}</td>
+									
                                    </tr>
                                     </tr>
                             </table>
@@ -192,7 +82,7 @@
       </ion-list>
     </div>
 
-    <div ng-controller="CollapsablePanel1">
+    <div ng-controller="CollapsablePanelActive" class="ctrlclass">
           <ion-list>
           <div ng-repeat="group in groups">
           <ion-item class="item-stable item-icon-right" style="color:#fff"
@@ -201,70 +91,49 @@
               <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
             Price Book
           </ion-item>
-         <ion-item  ng-show="isGroupShown(group)">
+         <ion-item  ng-show="isGroupShown(group)" style="padding: 0px 5px !important;">
             <ion-list>
-        <div style="width:100%;overflow-y:scroll;" >
-        <table class="table table-bordered" id="Table3">
-        <tbody ng-repeat="item in items">
+			
+		 <div ng-if="Pricebook.length==0" style="text-align:center;color:#f00">No Data Found</div>
+				 <div ng-if="Pricebook.length>0" style="width:100%;" >
+        <table class="table table-bordered" id="Table3" style="margin-bottom: 5px">
+        <tbody>
             <tr class="main-row"  style="background-color:#17202A; font-size:8pt; color:white;">
                 <td>Tower</td>
-                <td>Product</td>                 
-                <td>Scheme</td>
-                <td>Area</td>
-                <td>Rate</td>
-                <td>Price Cr</td>
-                
+                <td>Product</td>
+                <td>Spec</td>
+                <td>Sche.</td>
+				<td>Valid From</td>
+                <td>Valid To</td>
             </tr>
-            <tr style="font-size:8pt;">            
-                <td style="font-size:8pt;">T1</td>
-                <td style="background-color: #0000ff; color:#fff;font-size:8pt;">S12A1</td>
-                <td style="font-size:8pt;"></td>
-                <td style="font-size:8pt;text-align:right;">5868</td>
-                <td style="font-size:8pt;"></td>
-                <td style="font-size:8pt;text-align:right;">3.071</td>                
-            </tr>
-            <tr style="font-size:8pt;">            
-                <td style="font-size:8pt;">T1</td>
-                <td style="background-color: #8a2be2;font-size:8pt;color:#fff;">S12A1</td>
-                <td style="font-size:8pt;"></td>
-                <td style="font-size:8pt;text-align:right;">5868</td>
-                <td style="font-size:8pt;"></td>
-                <td style="font-size:8pt;text-align:right;">3.071</td>                
-            </tr>
-            <tr style="font-size:8pt;">            
-                <td style="font-size:8pt;">T1</td>
-                <td style="background-color: #a52a2a;color:#fff;font-size:8pt;">S12A1</td>
-                <td style="font-size:8pt;"></td>
-                <td style="font-size:8pt;text-align:right;">5868</td>
-                <td style="font-size:8pt;"></td>
-                <td style="font-size:8pt;text-align:right;">3.071</td>                
-            </tr>
-            <tr style="font-size:8pt;">            
-                <td style="font-size:8pt;">T1</td>
-                <td style="background-color: #006400;color:#fff;font-size:8pt;">S12A1</td>
-                <td style="font-size:8pt;"></td>
-                <td style="font-size:8pt;text-align:right;">5868</td>
-                <td style="font-size:8pt;"></td>
-                <td style="font-size:8pt;text-align:right;">3.071</td>                
-            </tr>
-            <tr style="font-size:8pt;">            
-                <td style="font-size:8pt;">T1</td>
-                <td style="background-color: #88ff1b;color:#fff;font-size:8pt;">S12A1</td>
-                <td style="font-size:8pt;"></td>
-                <td style="font-size:8pt;text-align:right;">5868</td>
-                <td style="font-size:8pt;"></td>
-                <td style="font-size:8pt;text-align:right;">3.071</td>                
-            </tr>
-            <tr style="font-size:8pt;">            
-                <td style="font-size:8pt;">T1</td>
-                <td style="background-color: #0000ff;color:#fff;font-size:8pt;">S12A1</td>
-                <td style="font-size:8pt;"></td>
-                <td style="font-size:8pt;text-align:right;">5868</td>
-                <td style="font-size:8pt;"></td>
-                <td style="font-size:8pt;text-align:right;">3.071 </td>                
-            </tr>
-             
-           
+			<tr ng-repeat-start="item in Pricebook" ng-click="showPriceBook(item.PriceBookID)">
+				<td style="font-size:8pt;">{{item.TowerName}} </td>
+				<td style="font-size:8pt;"> {{item.SubProductCode}}</td>
+				<td style="font-size:8pt;background-color:{{item.HeadingColourCode}};color:#fff"> {{item.SpecificationName}}</td>
+				<td style="font-size:8pt;"> {{item.SchemaName ==null?'NA':item.SchemaName}}</td>
+				<td style="font-size:8pt;"> {{item.FromDate | date :'dd-MMM'}}</td>
+				<td style="font-size:8pt;"> {{item.ToDate | date :'dd-MMM'}}</td>
+			</tr>
+			<tr ng-if="subPriceBookList.elements.length>0 && subPriceBookList.result.PriceBookID==item.PriceBookID">
+				<td colspan="5">
+					<table class="table table-bordered" id="Table3" style="margin-bottom: 5px">
+						<tr class="main-row" style="background-color:#17202A; font-size:8pt; color:white;">
+							<td>Price type</td>
+							<td>Area Basis</td>
+							<td>Rate</td>
+							<td>OwnerShip</td>
+						</tr>
+						<tr ng-repeat-start="subItem in subPriceBookList.elements">
+							<td style="font-size:8pt;">{{subItem.PriceElementCode}} </td>
+							<td style="font-size:8pt;"> {{subItem.PricingAreaBasis}}</td>
+							<td style="font-size:8pt;"> {{subItem.Rate}}</td>
+							<td style="font-size:8pt;"> {{subItem.ownerShip}}</td>
+						</tr>
+						<tr ng-repeat-end></tr>
+					</table>
+				</td>
+			</tr>
+			<tr ng-repeat-end></tr>
          </tbody>  
                   
         </table>  
@@ -274,478 +143,5 @@
         </div>
       </ion-list>
     </div>
-
-    <div ng-controller="CollapsablePanel1" ng-show="false">
-          <ion-list>
-          <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#fff"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-            Templates
-          </ion-item>
-         <ion-item  ng-show="isGroupShown(group)">
-          <ion-scroll direction="x" class="wide-as-needed">
-            <div class="row"  style="margin-bottom: 9px;">
-               <div class="product-space" ng-repeat="s in Products" ng-init="x.imageurl=imageUrl11" >
-              <img src="{{x.imageurl}}"  on-tap="onTap11(x)" ><span class="product" >{{s.SubProductCode}}</span>
-              </div>
-            </div>
-           </ion-scroll>
-            <div style="border:solid 1px #424242"></div>
-             <div class="row">
-               <div class="col" style="padding: 11px;color:orange;">Specification</div>
-                <div class="col"><div class="btn-specification">Download</div></div>
-               </div>
-               <div style="border:solid 1px #424242"></div>
-               <div class="row">
-                <div class="col" style="padding: 11px;color:orange;">Terms & Condition</div>
-                <div class="col"><div class="btn-specification">Download</div></div>
-               </div>
-                 <div style="border:solid 1px #424242"></div>
-               <div class="row">
-               <div class="col" style="padding: 11px;color:orange;">Agreements</div>
-                <div class="col"><div class="btn-specification">Download</div></div>
-              </div>
-             <div style="border:solid 1px #424242"></div>
-          </ion-item>
-        </div>
-      </ion-list>
-    </div>
- 
-
-    <!--<div ng-controller="CollapsablePanel1" >
-          <ion-list>
-          <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#fff"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-           Layout
-          </ion-item>
-         <ion-item  ng-show="isGroupShown(group)" >
-           <div style="width:100%;overflow-y:scroll;" >
-              <div ng-controller="FullscreenImageCtrl">
-	              <table class="table table-bordered" id="Table3" style="width:570px;">
-                                    <tr style="background-color:#17202A; font-size:8pt; color:white;">
-                                        <th style="width:130px;">Title</th>
-                                        <th style="width:55px;">Document Category</th>
-                                        <th style="width:55px;">Document Type</th>
-                                        <th style="width:65px;">Document Sub Type</th>
-                                        <th style="width:65px;">Document File</th>    
-                                    </tr>
-                                   
-                                    <tr style="font-size:10pt;">
-                                     <tr ng-repeat="x in Layouts">
-                                        <td style="font-size:8pt;">{{x.DocumentName}}</td>
-                                        <td style="font-size:8pt;">{{x.Category}}</td>
-                                        <td style="font-size:8pt;">{{x.DocumentType}}</td>
-                                        <td style="font-size:8pt;">{{x.DocumentSubType}}</td>
-                                        <td style="font-size:8pt;"><img src="http://192.168.51.251/portfolio/{{x.Path}}" 
-                                         style="width:110px;height:31px;" ng-click="FileDownload(x.Path)"></td>
-                                     </tr>
-                                    </tr>
-                                   
-                                </table>
-                                 </div>    
-                         <script id="image-modal.html" type="text/ng-template">
-                          <div class="modal image-modal transparent" ng-click="closeModal()">
-                            <ion-pane class="transparent">
-                            <img ng-src="{{imageSrc}}" class="fullscreen-image"/>
-                            </ion-pane>
-                            <div class="bar bar-footer">
-                               <div class="row" style="margin-top: -66px;">
-                               <div class="col"><div class="today-followupbtn" ng-click="createContact(newUser)">Download</div></div>
-                               <div class="col"><div class="today-followupbtn" ng-click="modal.hide()">Email</div></div>
-                            </div>
-                            </div>
-                          </div>
-                        </script>
-                   </div>
-      </ion-item>
-     </div>
-    </ion-list>
-  </div>-->
-
-    <!--<div ng-controller="CollapsablePanel1">
-      <ion-list>
-         <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#fff" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
-           <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-           Tax Book
-          </ion-item>
-          <ion-item  ng-show="isGroupShown(group)">
-          
-          <div ng-repeat="x in TaxDetails" ng-init="GetTaxDetails(x);">
-          <div ng-controller="CollapsablePanel1">
-          <ion-list>
-          <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#000;background-color:#d3cfca;" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
-          <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-           <span style="font-size:10pt;">Tower Name: {{x.TowerName}} </span>
-          </ion-item>
-          <ion-item  ng-show="isGroupShown(group)">
-          <div ng-repeat="subtax in TaxElements">
-          
-          <div ng-controller="CollapsablePanel1">
-          <ion-list>
-          <div ng-repeat="group in groups">
-
-          <ion-item class="item-stable item-icon-right" style="color:#000;background-color:#d3cfca;"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-          <i class="icon" style="font-size:8pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-          <span style="font-size:10pt;">{{subtax.constype}}</span>
-          </ion-item>
-          <ion-item  ng-show="isGroupShown(group)">
-          
-              <div style="width:100%;overflow:scroll;" >
-              <table class="table table-bordered" id="Table3" >
-                                    <tr style="background-color:#17202A; font-size:8pt; color:white;">
-                                        <th>Tax Name</th>
-                                        <th>SAP Code</th>
-                                        <th>Condition Type</th>
-                                        <th>Rate</th>
-                                        <th>Is Tax Inclusive</th>   
-                                        <th>Applicability Event</th>                 
-                                    </tr>
-                                   
-                                    <tr style="font-size:10pt;">
-                                     <tr ng-repeat="ele in subtax.texele">
-                                        <td style="font-size:8pt;">{{ele.TaxTypeName}}</td>
-                                        <td style="font-size:8pt;">{{ele.saptaxCode}}</td>
-                                        <td style="font-size:8pt;">{{ele.conditionType}}</td>
-                                        <td style="font-size:8pt;">{{ele.TaxRate}}</td>
-                                        <td style="font-size:8pt;">{{ele.IsTaxInclusive}}</td>
-                                        <td style="font-size:8pt;">{{ele.TaxationInApplicabilityEvent}}</td>
-                                     </tr>
-                                    </tr>
-                                    
-              </table>
-              </div>
-
-
-          </ion-item>
-
-
-          </div>
-          </ion-list>
-          </div>
-
-          </div>
-       
-          </ion-item>
-         </div>
-         </ion-list>
-         </div>
-         </div>
-         </ion-item>
-        </div>
-       </ion-list>
-     </div>-->
-     
-
-    <!--<div ng-controller="CollapsablePanel1">
-          <ion-list>
-          <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#fff"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-          Bank Details
-          </ion-item>
-         <ion-item  ng-show="isGroupShown(group)" ng-controller="GetAllTEBankDetailByProjectID">
-       <div style="width:100%;overflow-y:scroll;" >
-	            <div>
-	              <table class="table table-bordered" id="Table3" style="width:570px;">
-                                    <tr style="background-color:#17202A; font-size:8pt; color:white;">
-                                        <th style="width:130px;">Account Name</th>
-                                        <th style="width:55px;">Account Number</th>
-                                        <th style="width:55px;">Bank Name</th>
-                                        <th style="width:65px;">City</th>
-                                        <th style="width:65px;">Block</th>
-                                        <th style="width:155px;">Type</th>
-
-                                    </tr>
-                                    <tr style="font-size:10pt;">
-                                     <tr ng-repeat="x in bankDetails">
-                                        <td style="font-size:8pt;">{{x.AccountName}}</td>
-                                        <td style="font-size:8pt;">{{x.AccountNumber}}</td>
-                                        <td style="font-size:8pt;">{{x.BankName}}</td>
-                                        <td style="font-size:8pt;">{{x.City}}</td>
-                                        <td style="font-size:8pt;">{{x.TowerID}}</td>
-                                        <td style="font-size:8pt;">{{x.Type}}</td>
-
-                                   </tr>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-          </ion-item>
-        </div>
-      </ion-list>
-    </div>-->
-
-
-    <!--<div ng-controller="CollapsablePanel1" ng-show="false">
-          <ion-list>
-          <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#fff"
-           ng-class="{active: isGroupShown(group)}"  ng-click="toggleGroup(group);">
-              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-          Standard Terms & Condition
-          </ion-item>
-          <div>
-         <ion-item  ng-show="isGroupShown(group)">
-       <ion-scroll zooming="true" direction="xy" style="width: 500px; height: 500px">
-	              <table class="table table-bordered" id="Table3" style="width:570px;">
-                                   <tr style="background-color:#17202A; font-size:8pt; color:white;">
-                                        <th style="width:55px;">Condition ID</th>
-                                        <th style="width:55px;">Product Type</th>
-                                        <th style="width:65px;">OwnerShip Type</th>
-                                        <th style="width:65px;">Document Type</th>
-                                        <th style="width:155px;">Launch Type</th>
-                                        <th style="width:55px;">Condition Text</th>
-                                    </tr>
-                                    <tr style="font-size:10pt;" ng-repeat="s in Products"  >
-                                     <tr ng-repeat="x in values">
-                                        <td style="font-size:8pt;">{{x.TandCID}}</td>
-                                        <td style="font-size:8pt;">{{x.ProductType}}</td>
-                                       
-                                        <td style="font-size:8pt;">{{x.IsTEORJD}}</td>
-                                        <td style="font-size:8pt;">{{x.DocumentName}}</td>                                        <td style="font-size:8pt;">{{x.LaunchType}}</td>
-                                         <td style="font-size:8pt;">{{x.MasterTermsandConditionText}}</td>
-
-                                     </tr>
-                                    </tr>
-                                </table>
-                        </ion-scroll>
-          </ion-item>
-          </div>
-        </div>
-      </ion-list>
-    </div>-->
-
-     <!--<div ng-controller="CollapsablePanel1" ng-show="false">
-          <ion-list>
-          <div ng-repeat="group in groups" >
-          <ion-item class="item-stable item-icon-right" style="color:#fff"
-          ng-class="{active: isGroupShown(group)}" ng-click="toggleGroup(group); showAlert('Fugue');">
-          <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-         Schedule
-        </ion-item>
-        <ion-item  ng-show="isGroupShown(group)">
-            <div style="width:100%;overflow-y:scroll;" >
-	              <table class="table table-bordered" id="Table3" style="width:570px;">
-                                   <tr style="background-color:#17202A; font-size:8pt; color:white;">
-                                        <th style="width:130px;">Schedule Name</th>
-                                        <th style="width:55px;">Tower</th>
-                                        <th style="width:55px;">Product</th>
-                                        <th style="width:65px;">Base Lined Date</th>
-                                        <th style="width:65px;">Schedule Date</th>
-                                        <th style="width:155px;">Revenue Type</th>
-                                        <th style="width:155px;">Revenue Value</th>
-                                        <th style="width:155px;">MileStone Interval</th>
-
-                                    </tr>
-                                    <tr style="font-size:10pt;">
-                                     <tr ng-repeat="x in GetAllScheduleMaster">
-                                        <td style="font-size:8pt;">{{x.ScheduleName}}</td>
-                                        <td style="font-size:8pt;">{{x.TowerName}}</td>
-                                        <td style="font-size:8pt;">{{x.SubProductCode}}</td>
-                                        <td style="font-size:8pt;">Not Available</td>
-                                        <td style="font-size:8pt;">Not Available</td>
-                                        <td style="font-size:8pt;">Not Available</td>
-                                        <td style="font-size:8pt;">Not Available</td>
-                                        <td style="font-size:8pt;">Not Available</td>
-                                   </tr>
-                                    </tr>
-                                </table>
-                            </div>
-        </ion-item>
-        </div>
-      </ion-list>
-    </div>-->
-
-     <!--<div ng-controller="CollapsablePanel1" >
-          <ion-list>
-          <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#fff"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-         Sales Plan & Target
-          </ion-item>
-         <ion-item  ng-show="isGroupShown(group)">
-        <div style="width:100%;overflow-y:scroll;" >
-	            <div ng-controller="GetSalesPlanTargetsByProjectId">
-	              <table class="table table-bordered" id="Table3" style="width:570px;">
-                         <tr style="background-color:#17202A; font-size:8pt; color:white;">
-                            <th style="width:130px;">Financial Year</th>
-                            <th style="width:55px;">Financial Quarter</th>
-                            <th style="width:55px;">Product</th>
-                            <th style="width:65px;">Target In Revenue</th>
-                            <th style="width:65px;">Target In Units</th>
-                            <th style="width:155px;">Target Type</th>
-
-                          </tr>
-                            <tr style="font-size:10pt;">
-                            <tr ng-repeat="x in results">
-                            <td style="font-size:8pt;">{{x.FinancialYear}}</td>
-                            <td style="font-size:8pt;">{{x.FinancialQuarter}}</td>
-                            <td style="font-size:8pt;">{{x.ProductName}}</td>
-                            <td style="font-size:8pt;">{{x.SalesValue}}</td>
-                            <td style="font-size:8pt;">{{x.NoOfSales}}</td>
-                            <td style="font-size:8pt;">{{x.TargetType}}</td>
-                              </tr>
-                          </tr>
-                  </table>
-              </div>
-          </div>
-          </ion-item>
-        </div>
-      </ion-list>
-    </div>-->
-
-     <!--<div ng-controller="CollapsablePanel1" ng-show="false">
-          <ion-list>
-          <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#fff"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-        Car Park
-          </ion-item>
-         <ion-item  ng-show="isGroupShown(group)">
-
-    <div ng-controller="CollapsablePanel1">
-          <ion-list>
-          <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#000; background-color:#d3cfca;"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-       Project Car Park Summary
-          </ion-item>
-         <ion-item  ng-show="isGroupShown(group)">
-         <div style="width:100%;overflow-y:scroll;" >
-	            <div >
-	              <table class="table table-bordered" id="Table3" style="width:570px;">
-                         <tr style="background-color:#17202A; font-size:8pt; color:white;">
-                            <th style="width:130px;">Car Park Type</th>
-                           
-                            <th style="width:55px;">Car Park Rate</th>
-                            <th style="width:65px;">Total Car Parks</th>
-                            <th style="width:65px;">Sold</th>
-                            <th style="width:65px;">UnSold</th>
-                            <th style="width:65px;">Allocated</th>
-                            <th style="width:65px;">UnAllocated</th>
-                          </tr>
-                            <tr style="font-size:10pt;" ng-repeat="x in carparks">
-                            <td style="font-size:8pt;">{{x.CarParkShortName}}</td>
-                            
-                            <td style="font-size:8pt;">{{x.CarParkRate}}</td>
-                            <td style="font-size:8pt;">{{x.TotalCarParks}}</td>
-                            <td style="font-size:8pt;">{{}}</td>
-                            <td style="font-size:8pt;">0</td>
-                            <td style="font-size:8pt;">{{x.Allocated}}</td>
-                            <td style="font-size:8pt;">0</td>
-                         </tr>
-                  </table>
-              </div>
-          </div>
-          </ion-item>
-        </div>
-      </ion-list>
-      </div>
-      <div ng-controller="CollapsablePanel1">
-      <ion-list>
-          <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#000; background-color:#d3cfca;"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-       Deafault Car Park 
-          </ion-item>
-         <ion-item  ng-show="isGroupShown(group)">
-         <div style="width:100%;overflow-y:scroll;" >
-              <div >
-                <table class="table table-bordered" id="Table3" style="width:570px;">
-                         <tr style="background-color:#17202A; font-size:8pt; color:white;">
-                            <th style="width:130px;">Product</th>
-                           
-                            <th style="width:55px;">Car Park Rate</th>
-                            <th style="width:65px;">Deafault Carpark Type</th>
-                            <th style="width:65px;">Carpark Rate</th>
-                            <th style="width:65px;">Minimum Car Parks</th>
-                            <th style="width:65px;">Max Car Parks</th>
-                            
-                          </tr>
-                            <tr style="font-size:10pt;" ng-repeat="x in Defaultcarparks">
-                            <td style="font-size:8pt;">{{x.SubProductCode}}</td>
-                            
-                            <td style="font-size:8pt;">{{x.CarParkShortName}}</td>
-                            <td style="font-size:8pt;">{{x.TotalCarParks}}</td>
-                            <td style="font-size:8pt;">{{x.CarParkRate}}</td>
-                            <td style="font-size:8pt;">{{x.MinimumCarParks}}</td>
-                            <td style="font-size:8pt;">{{x.MaximumCarParks}}</td>
-                        
-                         </tr>
-                  </table>
-              </div>
-          </div>
-          </ion-item>
-        </div>
-      </ion-list>
-    </div>-->
-
-    <!--<div ng-controller="CollapsablePanel1">
-      <ion-list>
-          <div ng-repeat="group in groups">
-          <ion-item class="item-stable item-icon-right" style="color:#000; background-color:#d3cfca;"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" style="font-size:12pt;" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-      Car Park Inventory
-          </ion-item>
-         <ion-item  ng-show="isGroupShown(group)">
-         <div style="width:100%;overflow-y:scroll;" >
-              <div >
-                <table class="table table-bordered" id="Table3" style="width:570px;">
-                         <tr style="background-color:#17202A; font-size:8pt; color:white;">
-                            <th style="width:130px;">Carpark Type</th>
-                           
-                            <th style="width:55px;">Car Park Number</th>
-                            <th style="width:65px;">Allocated On</th>
-                            <th style="width:65px;">Allocation Letter</th>
-                            <th style="width:65px;">Proximity Towers</th>
-                            <th style="width:65px;">Car Park Features</th>
-                            <th style="width:65px;">Status</th>
-                            
-                          </tr>
-                            <tr style="font-size:10pt;" ng-repeat="x in carparkInventory">
-                            <td style="font-size:8pt;">{{x.CarParkShortName}}</td>
-                            
-                            <td style="font-size:8pt;">{{x.CarParkNumber}}</td>
-                            <td style="font-size:8pt;">{{x.AllocatedOn}}</td>
-                            <td style="font-size:8pt;">{{}}</td>
-                            <td style="font-size:8pt;">{{x.TowerProximityNames}}</td>
-                            <td style="font-size:8pt;">{{x.CarParkFeaturesNames}}</td>
-                             <td style="font-size:8pt;">{{x.CarParkInventoryStatus}}</td>
-                        
-                         </tr>
-                  </table>
-              </div>
-          </div>
-          </ion-item>
-        </div>
-      </ion-list>
-    </div>-->
-
-   </ion-item>
-  </div>
- </ion-list>
-</div>
-
 </ion-content>
 </ion-view>
